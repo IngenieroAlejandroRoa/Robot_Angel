@@ -1,0 +1,26 @@
+# Node / Electron
+node_modules/
+dist/
+out/
+build/
+.theia/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venvs/
+
+# IDE temporales
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos de instalación locales
+tools/
