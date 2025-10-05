@@ -121,6 +121,11 @@ fi
 if ! grep -q "tools/bin" ~/.bashrc; then
   echo 'export PATH="$HOME/tools/bin:$PATH"' >> ~/.bashrc
 fi
+# 🧩 Añadir export automático de ESP-IDF al bashrc (si no existe)
+if ! grep -q "esp-idf/export.sh" ~/.bashrc; then
+  echo "source ~/tools/esp-idf/export.sh >/dev/null 2>&1" >> ~/.bashrc
+  echo "⚙️  Añadido export automático de ESP-IDF al ~/.bashrc"
+fi
 
 # --- Resumen final ---
 echo -e "\n${GREEN}✅ Instalación completa de Robot Angel.${NC}"
