@@ -1,0 +1,25 @@
+# ==============================================================
+# Robot Angel - Requerimientos Python iniciales
+# ==============================================================
+# Utilidades para flashear microcontroladores
+esptool>=4.7
+mpremote>=1.24.0
+
+# micro-ROS Agent se instala desde apt:
+#   sudo apt install ros-jazzy-micro-ros-agent
+# NOTA: no está disponible en PyPI, por eso no se incluye aquí.
+
+# ROS 2 bindings para Python
+rclpy>=3.3.7
+
+# Buenas prácticas y análisis de código
+pylint>=3.2.6
+black>=24.8.0
+
+# Herramientas para comunicación y pruebas
+pyserial>=3.5
+requests>=2.32.3
+
+# Otras utilidades
+click>=8.1.7
+
