@@ -84,51 +84,12 @@ echo -e "${GREEN}🔧 Configurando ESP-IDF...${NC}"
 mkdir -p ~/tools
 cd ~/tools
 
-# Clonar la versión estable más reciente
 if [ ! -d "esp-idf" ]; then
-  echo -e "${YELLOW}📦 Clonando ESP-IDF (release/v5.3)...${NC}"
-  if git ls-remote --exit-code https://github.com/espressif/esp-idf.git release/v5.3 &>/dev/null; then
-    git clone -b release/v5.3 --recursive https://github.com/espressif/esp-idf.git
-  else
-    echo -e "${YELLOW}⚠️  Rama v5.3 no encontrada, usando 'master' como respaldo...${NC}"
-    git clone --recursive https://github.com/espressif/esp-idf.git
-  fi
+  git clone -b v6.0 --recursive https://github.com/espressif/esp-idf.git
 fi
-
 cd esp-idf
 
-# Instalar dependencias Python y herramientas del IDF
-./install.sh || {
-  echo -e "${RED}⚠️  Advertencia: falló el instalador de ESP-IDF, intenta manualmente más tarde con './install.sh'${NC}"
-}
+# Instalación de entorno Python de IDF
+./install.sh || true
 
 # Añadir export permanente si no existe
-if ! grep -q "esp-idf/export.sh" ~/.bashrc; then
-  echo 'source ~/tools/esp-idf/export.sh' >> ~/.bashrc
-fi
-
-
-# --- Arduino CLI ---
-echo -e "${GREEN}🔩 Instalando Arduino CLI...${NC}"
-mkdir -p ~/tools/bin
-cd ~/tools
-
-if ! command -v arduino-cli &> /dev/null; then
-  echo -e "${YELLOW}📦 Descargando Arduino CLI...${NC}"
-  curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_1.3.1_Linux_64bit.tar.gz | tar xz -C ~/tools/bin --strip-components 1
-fi
-
-if ! grep -q "tools/bin" ~/.bashrc; then
-  echo 'export PATH="$HOME/tools/bin:$PATH"' >> ~/.bashrc
-fi
-
-# --- Resumen final ---
-echo -e "\n${GREEN}✅ Instalación completa de Robot Angel.${NC}"
-echo -e "${YELLOW}➡️  Recomendado: reinicia la sesión o ejecuta:${NC}"
-echo -e "   source ~/.bashrc"
-echo -e "${YELLOW}➡️  Luego activa el entorno Python con:${NC}"
-echo -e "   source ~/.venvs/robot-angel/bin/activate"
-echo -e "${YELLOW}➡️  Y verifica la instalación con:${NC}"
-echo -e "   ros2 run micro_ros_agent micro_ros_agent --help"
-echo -e "\n${GREEN}🤖 Robot Angel listo para despegar.${NC}"
-
