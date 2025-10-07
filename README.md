@@ -4,7 +4,7 @@
 
 ---
 
-## 🧭 Tabla de contenidos
+## Tabla de contenidos
 
 * [Visión](#-visión)
 * [Características](#-características)
@@ -24,11 +24,11 @@
 
 ---
 
-## 🎯 Visión
+## Visión
 
 Robot Angel busca **democratizar la robótica** mediante un IDE libre, multiplataforma y modular que integre *tooling* moderno (Theia, LSP/DAP), automatice la carga de *middlewares* (micro-ROS, MicroPython) en placas de bajo costo (ESP32, RP2040) y provea documentación pedagógica para acelerar prototipos en educación STEM y proyectos profesionales.
 
-## ✨ Características
+## Características
 
 * **IDE basado en Theia**: editor moderno con soporte LSP/DAP, extensiones y vista de terminal integrada.
 * **Instalación en un clic de *middlewares***: scripts para cargar **micro-ROS** y **MicroPython** en ESP32 / Raspberry Pi Pico.
@@ -39,7 +39,7 @@ Robot Angel busca **democratizar la robótica** mediante un IDE libre, multiplat
 
 > Objetivo general: *Desarrollar un IDE open source especializado en desarrollo robótico.*
 
-## 🧱 Arquitectura
+## Arquitectura
 
 * **Núcleo**: Theia (desktop/web) + extensiones para embebidos.
 * **Automatización**: scripts (Python/Node) para instalar y flashear **micro-ROS** y **MicroPython**.
@@ -52,7 +52,7 @@ Robot Angel busca **democratizar la robótica** mediante un IDE libre, multiplat
                                   └─▶ Ejemplos / Plantillas ──▶ Sensores/Actuadores
 ```
 
-## 🔧 Requisitos
+## Requisitos
 
 * **Git** ≥ 2.40
 * **Node.js LTS** + **npm** (Theia)
@@ -62,7 +62,7 @@ Robot Angel busca **democratizar la robótica** mediante un IDE libre, multiplat
   * ESP32: ESP-IDF o toolchain Arduino-CLI (opcional), `esptool.py`.
   * RP2040: *bootloader* UF2 y herramientas de copia/flash.
 
-## 🖥️ Instalación
+## Instalación
 
 ### Linux
 
@@ -128,7 +128,7 @@ pip install -r tools/requirements.txt
    ```
 5. **Abrir consola serie** integrada y validar salida.
 
-## 🗂️ Estructura del repositorio
+## Estructura del repositorio
 
 ```
 robot-angel/
@@ -145,7 +145,7 @@ robot-angel/
 └─ README.md
 ```
 
-## 🗺️ Rutas de trabajo (Roadmap)
+## Rutas de trabajo (Roadmap)
 
 * [ ] Extensión Theia para **detectar placa** y puerto automáticamente.
 * [ ] **Asistente de instalación** de micro-ROS/MicroPython (GUI).
@@ -154,7 +154,7 @@ robot-angel/
 * [ ] Paquetes para **Linux .deb** y **Windows MSI**.
 * [ ] Documentación pedagógica (guías clase a clase y rúbricas).
 
-## 🤝 Contribuir
+## Contribuir
 
 1. Haz un **fork** y crea una rama: `feat/mi-feature`.
 2. Ejecuta `npm test` / `lint` antes de enviar.
@@ -163,11 +163,11 @@ robot-angel/
 
 > Si eres docente/estudiante y quieres integrar Robot Angel en tu curso, revisa `/docs/edu/`.
 
-## 📜 Licencia
+## Licencia
 
 Distribuido bajo **GNU GPLv3**. Consulta el archivo [`LICENSE`](./LICENSE).
 
-## 📚 Citación
+## Citación
 
 Si usas Robot Angel en investigación/enseñanza, por favor cita el proyecto y el documento del trabajo de grado:
 
@@ -180,7 +180,7 @@ Si usas Robot Angel en investigación/enseñanza, por favor cita el proyecto y e
 }
 ```
 
-## 🙏 Agradecimientos
+## Agradecimientos
 
 * Comunidad **open source** (Theia, micro-ROS, MicroPython).
 * Semilleros y docentes que apoyaron la validación y pruebas.
