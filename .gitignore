@@ -1,26 +1,30 @@
-# Node / Electron
+# Node / frontend
 node_modules/
 dist/
-out/
 build/
+lib/
 .theia/
+.env
+*.log
+*.lock
+.DS_Store
 
-# Python
+# Python / backend
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .venv/
-.venvs/
+env/
+venv/
 
-# IDE temporales
-.vscode/
+# System / editor files
 .idea/
+.vscode/
+*.swp
 
-# Sistema operativo
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Archivos de instalación locales
-tools/
+# Local artifacts
+*.egg-info/
+*.bak
+*.tmp
+*.old
