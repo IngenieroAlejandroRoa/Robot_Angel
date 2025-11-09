@@ -6,6 +6,9 @@
  *
  * SPDX-License-Identifier: MIT
  ********************************************************************************/
+// Robot Angel: ocultar toda la UI menos la barra superior
+// IMPORTAR DESDE src (¡no desde ./style!) para que Webpack lo encuentre al compilar desde lib/
+import '../../src/browser/style/robot-angel-hide-theia.css';
 
 import '../../src/browser/style/index.css';
 

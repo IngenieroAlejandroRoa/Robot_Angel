@@ -9,7 +9,7 @@
   "author": "Eclipse Theia <theia-dev@eclipse.org>",
   "homepage": "https://github.com/eclipse-theia/theia-ide#readme",
   "bugs": {
-    "url": "https://github.com/eclipse-theia/theia/issues"
+    "url": "https://github.com/eclipse-theia/theia-ide/issues"
   },
   "repository": {
     "type": "git",

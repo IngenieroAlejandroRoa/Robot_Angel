@@ -1,0 +1,47 @@
+/* Robot Angel: ocultar toda la UI excepto la barra superior (menú) */
+
+/* El contenedor raíz de la UI de Theia es .theia-ApplicationShell. 
+   Con esta regla escondemos TODOS sus hijos excepto #theia-top-panel. */
+.theia-ApplicationShell > :not(#theia-top-panel) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Asegurar que el top panel esté visible y con altura fija */
+#theia-top-panel {
+  display: block !important;
+  visibility: visible !important;
+  min-height: 32px;
+  max-height: 32px;
+  height: 32px;
+  border: 0;
+  box-shadow: none;
+}
+
+/* El menú web de Theia se monta dentro del top panel: que ocupe todo el ancho */
+#theia-top-panel .p-MenuBar,
+#theia-top-panel .theia-MenuBar,
+#theia-top-panel .p-Widget {
+  width: 100% !important;
+}
+
+/* Por robustez, también ocultamos explícitamente áreas conocidas por ID */
+#theia-main-content-panel,
+#theia-bottom-content-panel,
+#theia-statusBar {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Si tu producto trae la toolbar dinámica (@theia/toolbar), escóndela también */
+#theia-main-toolbar,
+.theia-MainToolbar,
+.p-TabBar-toolbar {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Evitar scroll y márgenes alrededor */
+body, html, .theia-ApplicationShell {
+  overflow: hidden !important;
+}
