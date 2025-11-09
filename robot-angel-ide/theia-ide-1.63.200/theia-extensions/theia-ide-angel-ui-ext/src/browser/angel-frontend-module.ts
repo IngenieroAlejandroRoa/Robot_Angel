@@ -1,0 +1,31 @@
+/*
+ * Copyright (c) 2025 Robot Angel project authors.
+ *
+ * This module binds our widget and contribution into Theia's
+ * dependency injection container.  It will be discovered via
+ * the `theiaExtensions` entry in package.json.  When the
+ * frontend starts, Theia will load this container module and
+ * execute the bindings below.
+ */
+
+import { ContainerModule } from '@theia/core/shared/inversify';
+import { bindViewContribution } from '@theia/core/lib/browser';
+import { WidgetFactory } from '@theia/core/lib/browser/widget-manager';
+import { AngelWidget } from './angel-widget';
+import { AngelWidgetContribution } from './angel-contribution';
+
+export default new ContainerModule(bind => {
+    // Register our contribution so it becomes available in the
+    // View menu and command palette.
+    bindViewContribution(bind, AngelWidgetContribution);
+
+    // Bind the widget so that the DI container can create it.
+    bind(AngelWidget).toSelf();
+
+    // Register a widget factory for our widget.  The widget
+    // manager uses factories to lazily create widgets on demand.
+    bind(WidgetFactory).toDynamicValue(ctx => ({
+        id: AngelWidget.ID,
+        createWidget: () => ctx.container.get<AngelWidget>(AngelWidget),
+    })).inSingletonScope();
+});
