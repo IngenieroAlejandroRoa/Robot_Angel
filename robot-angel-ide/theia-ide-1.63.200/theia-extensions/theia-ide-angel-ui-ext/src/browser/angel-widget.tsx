@@ -21,6 +21,9 @@ import { ReactWidget } from '@theia/core/lib/browser/widgets/react-widget';
 // designer.
 import App from '../App';
 // Pull in the global Tailwind CSS so that the UI is styled correctly.
+import '../index.css';
+// Import Theia-specific overrides
+import '../theia-integration.css';
 
 /**
  * AngelWidget wraps the custom React application into a Theia
@@ -55,14 +58,51 @@ export class AngelWidget extends ReactWidget {
      */
     @postConstruct()
     protected async init(): Promise<void> {
+        console.log('AngelWidget init() called');
         this.id = AngelWidget.ID;
         this.title.label = AngelWidget.LABEL;
         this.title.caption = AngelWidget.LABEL;
-        this.title.closable = true;
-        // Optionally set an icon.  The class must follow the
-        // naming scheme used by Theia (e.g. 'fa fa‑robot').  You
-        // can define your own CSS icon classes if needed.
-        this.title.iconClass = 'fa fa‑microchip';
+        this.title.closable = false;
+        this.title.iconClass = 'fa fa-microchip';
+        
+        // Asegurar que el widget ocupe todo el espacio disponible
+        this.node.style.width = '100%';
+        this.node.style.height = '100%';
+        this.node.style.overflow = 'auto';
+        this.node.style.display = 'block';
+        this.node.style.position = 'relative';
+        this.node.style.background = '#1a1a2e';
+        
+        // Agregar clase para identificación
+        this.node.classList.add('robot-angel-widget');
+        
+        console.log('AngelWidget calling update()');
+        console.log('Widget isVisible:', this.isVisible);
+        console.log('Widget isAttached:', this.isAttached);
+        this.update();
+        
+        // Forzar render después de un momento
+        setTimeout(() => {
+            console.log('Forcing update after timeout');
+            this.update();
+        }, 100);
+    }
+
+    protected onAfterAttach(msg: any): void {
+        super.onAfterAttach(msg);
+        console.log('AngelWidget onAfterAttach called');
+        console.log('Widget isVisible:', this.isVisible);
+        console.log('Widget isAttached:', this.isAttached);
+        // Forzar un re-render después de adjuntar
+        setTimeout(() => {
+            console.log('Forcing update after attach');
+            this.update();
+        }, 50);
+    }
+    
+    protected onActivateRequest(msg: any): void {
+        super.onActivateRequest(msg);
+        console.log('AngelWidget onActivateRequest called');
         this.update();
     }
 
@@ -74,6 +114,28 @@ export class AngelWidget extends ReactWidget {
      * here – React manages the contents of the widget’s node.
      */
     protected render(): React.ReactNode {
-        return <App />;
+        console.log("AngelWidget render() called - rendering full App");
+        try {
+            return <App />;
+        } catch (error) {
+            console.error('Error rendering App:', error);
+            return (
+                <div style={{ 
+                    width: "100%", 
+                    height: "100%", 
+                    display: "flex", 
+                    alignItems: "center", 
+                    justifyContent: "center",
+                    background: "#1a1a2e",
+                    color: "white",
+                    fontSize: "24px"
+                }}>
+                    <div>
+                        <h1>Error al cargar Robot Angel UI</h1>
+                        <p>{String(error)}</p>
+                    </div>
+                </div>
+            );
+        }
     }
 }

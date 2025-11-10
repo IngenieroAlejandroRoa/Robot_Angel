@@ -9,7 +9,7 @@
  */
 
 import { ContainerModule } from '@theia/core/shared/inversify';
-import { bindViewContribution } from '@theia/core/lib/browser';
+import { bindViewContribution, FrontendApplicationContribution } from '@theia/core/lib/browser';
 import { WidgetFactory } from '@theia/core/lib/browser/widget-manager';
 import { AngelWidget } from './angel-widget';
 import { AngelWidgetContribution } from './angel-contribution';
@@ -18,14 +18,18 @@ export default new ContainerModule(bind => {
     // Register our contribution so it becomes available in the
     // View menu and command palette.
     bindViewContribution(bind, AngelWidgetContribution);
+    
+    // IMPORTANT: Also bind as FrontendApplicationContribution to ensure
+    // initializeLayout() is called
+    bind(FrontendApplicationContribution).toService(AngelWidgetContribution);
 
     // Bind the widget so that the DI container can create it.
-    bind(AngelWidget).toSelf();
+    bind(AngelWidget).toSelf().inSingletonScope();
 
     // Register a widget factory for our widget.  The widget
     // manager uses factories to lazily create widgets on demand.
     bind(WidgetFactory).toDynamicValue(ctx => ({
         id: AngelWidget.ID,
-        createWidget: () => ctx.container.get<AngelWidget>(AngelWidget),
+        createWidget: () => Promise.resolve(ctx.container.get<AngelWidget>(AngelWidget)),
     })).inSingletonScope();
 });

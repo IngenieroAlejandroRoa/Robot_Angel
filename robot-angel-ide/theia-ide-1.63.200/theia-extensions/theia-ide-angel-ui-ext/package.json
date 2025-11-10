@@ -59,8 +59,9 @@
   },
   "scripts": {
     "clean": "rimraf lib *.tsbuildinfo",
-    "build": "npm run build:theia",
+    "build": "npm run build:theia && npm run copy:assets",
     "build:theia": "tsc -p .",
+    "copy:assets": "cp -r src/index.css src/theia-integration.css src/assets src/styles src/components lib/ && cp -r src/components/assets lib/components/ 2>/dev/null || true",
     "watch:theia": "tsc -p . -w"
   },
   "theiaExtensions": [

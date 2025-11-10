@@ -8,8 +8,8 @@
  * details【494939386884266†L146-L174】.
  */
 
-import { injectable } from '@theia/core/shared/inversify';
-import { FrontendApplication } from '@theia/core/lib/browser';
+import { injectable, inject } from '@theia/core/shared/inversify';
+import { FrontendApplication, FrontendApplicationContribution, WidgetManager } from '@theia/core/lib/browser';
 import {
     AbstractViewContribution,
     WidgetFactory,
@@ -35,6 +35,10 @@ export const AngelCommand: Command = {
  */
 @injectable()
 export class AngelWidgetContribution extends AbstractViewContribution<AngelWidget> {
+    
+    @inject(WidgetManager)
+    protected readonly widgetManager!: WidgetManager;
+    
     constructor() {
         super({
             widgetId: AngelWidget.ID,
@@ -54,19 +58,60 @@ export class AngelWidgetContribution extends AbstractViewContribution<AngelWidge
      */
     registerCommands(commands: CommandRegistry): void {
         commands.registerCommand(AngelCommand, {
-            execute: () => this.openView({ activate: true }),
+            execute: () => this.openView({ activate: true, reveal: true }),
         });
     }
 
     /**
-     * When the frontend application lays out its widgets, open our view automatically.
-     * Overriding this method ensures the Robot Angel UI appears on startup without
-     * requiring the user to run the command manually.
-     */
-    /**
-     * Called when the frontend starts.  Use this hook to open the view automatically.
+     * Called when the frontend application starts.
+     * We use this to automatically open the Robot Angel UI.
      */
     async onStart(app: FrontendApplication): Promise<void> {
-        await this.openView({ activate: true });
+        console.log('AngelWidgetContribution onStart() called');
+        
+        // Wait for the shell to be fully attached and ready
+        await app.shell.pendingUpdates;
+        
+        // Give the application MORE time to settle (increased from 1000ms)
+        setTimeout(async () => {
+            console.log('Opening Angel widget after timeout...');
+            
+            try {
+                // Close any existing main area widgets
+                const mainWidgets = app.shell.getWidgets('main');
+                console.log('Main widgets found:', mainWidgets.length);
+                
+                for (const widget of mainWidgets) {
+                    console.log('Closing widget:', widget.id);
+                    widget.close();
+                }
+                
+                // Create widget directly using widget manager
+                console.log('Creating widget via widgetManager (ASYNC)...');
+                const widget = await this.widgetManager.getOrCreateWidget(AngelWidget.ID) as AngelWidget;
+                console.log('Widget created:', widget);
+                console.log('Widget ID:', widget?.id);
+                
+                if (!widget) {
+                    console.error('Widget creation returned null/undefined!');
+                    return;
+                }
+                
+                // Add widget to main area
+                console.log('Adding widget to main area...');
+                app.shell.addWidget(widget, { area: 'main' });
+                
+                // Activate widget
+                console.log('Activating widget...');
+                await app.shell.activateWidget(widget.id);
+                
+                console.log('Widget isVisible:', widget.isVisible);
+                console.log('Widget isAttached:', widget.isAttached);
+                console.log('Widget parent:', widget.parent);
+                console.log('✅ Robot Angel UI opened successfully!');
+            } catch (error) {
+                console.error('Error opening Angel widget:', error);
+            }
+        }, 2000); // Increased from 1000ms to 2000ms
     }
 }

@@ -27,7 +27,8 @@
         "reloadOnReconnect": true,
         "preferences": {
           "toolbar.showToolbar": true,
-          "security.workspace.trust.enabled": false
+          "security.workspace.trust.enabled": false,
+          "workbench.startupEditor": "none"
         },
         "electron": {
           "showWindowEarly": false,
