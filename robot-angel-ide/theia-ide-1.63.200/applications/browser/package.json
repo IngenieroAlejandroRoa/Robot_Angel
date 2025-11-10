@@ -109,7 +109,8 @@
     "@theia/vsx-registry": "1.63.2",
     "@theia/workspace": "1.63.2",
     "fs-extra": "^9.0.1",
-    "theia-ide-product-ext": "1.63.200"
+    "theia-ide-product-ext": "1.63.200",
+    "robot-angel-ui-ext": "1.63.200"
   },
   "devDependencies": {
     "@theia/cli": "1.63.2",
