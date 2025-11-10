@@ -9,6 +9,7 @@
  */
 
 import { injectable } from '@theia/core/shared/inversify';
+import { FrontendApplication } from '@theia/core/lib/browser';
 import {
     AbstractViewContribution,
     WidgetFactory,
@@ -21,8 +22,9 @@ import { AngelWidget } from './angel-widget';
  * label will appear in command palettes and menus.
  */
 export const AngelCommand: Command = {
-    id: 'robot‑angel‑ui:open',
-    label: 'Open Robot Angel UI',
+    // Use only ASCII characters in the command ID and label.
+    id: 'robot-angel-ui:open',
+    label: 'Open Robot Angel UI',
 };
 
 /**
@@ -54,5 +56,17 @@ export class AngelWidgetContribution extends AbstractViewContribution<AngelWidge
         commands.registerCommand(AngelCommand, {
             execute: () => this.openView({ activate: true }),
         });
+    }
+
+    /**
+     * When the frontend application lays out its widgets, open our view automatically.
+     * Overriding this method ensures the Robot Angel UI appears on startup without
+     * requiring the user to run the command manually.
+     */
+    /**
+     * Called when the frontend starts.  Use this hook to open the view automatically.
+     */
+    async onStart(app: FrontendApplication): Promise<void> {
+        await this.openView({ activate: true });
     }
 }

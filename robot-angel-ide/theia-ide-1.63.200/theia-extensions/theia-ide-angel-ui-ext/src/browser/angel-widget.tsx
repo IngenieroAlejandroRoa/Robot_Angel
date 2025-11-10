@@ -20,6 +20,7 @@ import { ReactWidget } from '@theia/core/lib/browser/widgets/react-widget';
 // from App.tsx exposes the complete layout defined by the
 // designer.
 import App from '../App';
+// Pull in the global Tailwind CSS so that the UI is styled correctly.
 
 /**
  * AngelWidget wraps the custom React application into a Theia
@@ -34,14 +35,16 @@ export class AngelWidget extends ReactWidget {
      * contributions (see AngelWidgetContribution) you must
      * reference this ID.
      */
-    static readonly ID = 'robot‑angel‑ui:widget';
+    // Use only ASCII characters in the widget ID to avoid issues with non-standard hyphens.
+    static readonly ID = 'robot-angel-ui:widget';
 
     /**
      * A human readable name for the widget.  This text will
      * appear in the Theia UI, for example in the view menu and
      * the tab bar.
      */
-    static readonly LABEL = 'Robot Angel';
+    // Avoid non-breaking space in the label.
+    static readonly LABEL = 'Robot Angel';
 
     /**
      * Initialise the widget.  The `@postConstruct` decorator

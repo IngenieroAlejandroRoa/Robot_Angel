@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Play, Square, Bug, Settings, FileText, FolderOpen, Save, Zap, Cpu } from "lucide-react";
 // Import the logo from the local assets directory instead of using the figma: prefix
+// Import the logo from the assets folder within components.  The file will be copied to lib/components/assets during build.
 import logoImage from './assets/0619f22ea1d44864927116629fbe5ab4c93093fe.png';
 
 interface TopToolbarProps {
