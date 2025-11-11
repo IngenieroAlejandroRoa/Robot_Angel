@@ -12,16 +12,28 @@ import { CodeEditor } from "./components/CodeEditor";
 import { Terminal } from "./components/Terminal";
 import { SerialMonitor } from "./components/SerialMonitor";
 
+interface FileTab {
+  id: string;
+  filePath: string;
+  content: string;
+  isModified: boolean;
+}
+
 export default function App() {
   const [isSerialMonitorVisible, setIsSerialMonitorVisible] = useState(false);
-  const [currentFile, setCurrentFile] = useState<string | null>(null);
-  const [fileContent, setFileContent] = useState<string>("");
-  const [isModified, setIsModified] = useState(false);
+  const [openFiles, setOpenFiles] = useState<FileTab[]>([]);
+  const [activeFileId, setActiveFileId] = useState<string | null>(null);
   
   const codeEditorRef = useRef<any>(null);
 
+  const activeFile = openFiles.find(f => f.id === activeFileId);
+
   const toggleSerialMonitor = () => {
     setIsSerialMonitorVisible(!isSerialMonitorVisible);
+  };
+
+  const generateFileId = (filePath: string): string => {
+    return `file-${Date.now()}-${filePath.replace(/[^a-zA-Z0-9]/g, '-')}`;
   };
 
   const handleOpenFile = async () => {
@@ -35,9 +47,23 @@ export default function App() {
 
       const result = await angelFileService.openFile();
       if (result && result.filePath && result.content) {
-        setCurrentFile(result.filePath);
-        setFileContent(result.content);
-        setIsModified(false);
+        // Check if file is already open
+        const existingFile = openFiles.find(f => f.filePath === result.filePath);
+        if (existingFile) {
+          setActiveFileId(existingFile.id);
+          return;
+        }
+
+        // Add new file tab
+        const newFile: FileTab = {
+          id: generateFileId(result.filePath),
+          filePath: result.filePath,
+          content: result.content,
+          isModified: false,
+        };
+
+        setOpenFiles([...openFiles, newFile]);
+        setActiveFileId(newFile.id);
       }
     } catch (error) {
       console.error('Error opening file:', error);
@@ -52,14 +78,18 @@ export default function App() {
       return;
     }
 
-    if (!currentFile) {
+    if (!activeFile) {
       await handleSaveAsFile();
       return;
     }
 
     try {
-      await angelFileService.saveFile(currentFile, fileContent);
-      setIsModified(false);
+      await angelFileService.saveFile(activeFile.filePath, activeFile.content);
+      
+      // Update modified state
+      setOpenFiles(openFiles.map(f => 
+        f.id === activeFileId ? { ...f, isModified: false } : f
+      ));
     } catch (error) {
       console.error('Error saving file:', error);
     }
@@ -74,10 +104,28 @@ export default function App() {
         return;
       }
 
-      const filePath = await angelFileService.saveFileAs(fileContent);
+      const content = activeFile?.content || '';
+      const filePath = await angelFileService.saveFileAs(content);
+      
       if (filePath) {
-        setCurrentFile(filePath);
-        setIsModified(false);
+        if (activeFile) {
+          // Update existing file
+          setOpenFiles(openFiles.map(f =>
+            f.id === activeFileId
+              ? { ...f, filePath, isModified: false }
+              : f
+          ));
+        } else {
+          // Create new file
+          const newFile: FileTab = {
+            id: generateFileId(filePath),
+            filePath,
+            content,
+            isModified: false,
+          };
+          setOpenFiles([...openFiles, newFile]);
+          setActiveFileId(newFile.id);
+        }
       }
     } catch (error) {
       console.error('Error saving file as:', error);
@@ -85,14 +133,42 @@ export default function App() {
   };
 
   const handleNewFile = () => {
-    setCurrentFile(null);
-    setFileContent("");
-    setIsModified(false);
+    const newFile: FileTab = {
+      id: generateFileId('untitled'),
+      filePath: '',
+      content: '',
+      isModified: false,
+    };
+    setOpenFiles([...openFiles, newFile]);
+    setActiveFileId(newFile.id);
   };
 
   const handleContentChange = (content: string) => {
-    setFileContent(content);
-    setIsModified(true);
+    if (!activeFileId) return;
+
+    setOpenFiles(openFiles.map(f =>
+      f.id === activeFileId
+        ? { ...f, content, isModified: true }
+        : f
+    ));
+  };
+
+  const handleCloseFile = (fileId: string) => {
+    const updatedFiles = openFiles.filter(f => f.id !== fileId);
+    setOpenFiles(updatedFiles);
+
+    // If closing active file, switch to another
+    if (fileId === activeFileId) {
+      if (updatedFiles.length > 0) {
+        setActiveFileId(updatedFiles[updatedFiles.length - 1].id);
+      } else {
+        setActiveFileId(null);
+      }
+    }
+  };
+
+  const handleTabClick = (fileId: string) => {
+    setActiveFileId(fileId);
   };
 
   return (
@@ -104,7 +180,7 @@ export default function App() {
         onOpenFile={handleOpenFile}
         onSaveFile={handleSaveFile}
         onNewFile={handleNewFile}
-        isModified={isModified}
+        isModified={activeFile?.isModified || false}
       />
 
       {/* --- MAIN LAYOUT: Sidebar | Editor/Monitor | Terminal --- */}
@@ -139,9 +215,13 @@ export default function App() {
               <div className="flex flex-col h-full min-h-0">
                 <CodeEditor 
                   ref={codeEditorRef}
-                  content={fileContent}
-                  filePath={currentFile}
+                  content={activeFile?.content || ''}
+                  filePath={activeFile?.filePath || null}
                   onContentChange={handleContentChange}
+                  openFiles={openFiles}
+                  activeFileId={activeFileId}
+                  onTabClick={handleTabClick}
+                  onCloseTab={handleCloseFile}
                 />
               </div>
             </Panel>
