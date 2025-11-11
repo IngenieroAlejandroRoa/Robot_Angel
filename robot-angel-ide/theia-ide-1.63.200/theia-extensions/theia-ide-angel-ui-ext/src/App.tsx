@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Panel,
   PanelGroup,
@@ -14,9 +14,85 @@ import { SerialMonitor } from "./components/SerialMonitor";
 
 export default function App() {
   const [isSerialMonitorVisible, setIsSerialMonitorVisible] = useState(false);
+  const [currentFile, setCurrentFile] = useState<string | null>(null);
+  const [fileContent, setFileContent] = useState<string>("");
+  const [isModified, setIsModified] = useState(false);
+  
+  const codeEditorRef = useRef<any>(null);
 
   const toggleSerialMonitor = () => {
     setIsSerialMonitorVisible(!isSerialMonitorVisible);
+  };
+
+  const handleOpenFile = async () => {
+    try {
+      // @ts-ignore - Angel File Service
+      const angelFileService = window.angelFileService;
+      if (!angelFileService) {
+        console.error('Angel file service not available');
+        return;
+      }
+
+      const result = await angelFileService.openFile();
+      if (result && result.filePath && result.content) {
+        setCurrentFile(result.filePath);
+        setFileContent(result.content);
+        setIsModified(false);
+      }
+    } catch (error) {
+      console.error('Error opening file:', error);
+    }
+  };
+
+  const handleSaveFile = async () => {
+    // @ts-ignore - Angel File Service
+    const angelFileService = window.angelFileService;
+    if (!angelFileService) {
+      console.error('Angel file service not available');
+      return;
+    }
+
+    if (!currentFile) {
+      await handleSaveAsFile();
+      return;
+    }
+
+    try {
+      await angelFileService.saveFile(currentFile, fileContent);
+      setIsModified(false);
+    } catch (error) {
+      console.error('Error saving file:', error);
+    }
+  };
+
+  const handleSaveAsFile = async () => {
+    try {
+      // @ts-ignore - Angel File Service
+      const angelFileService = window.angelFileService;
+      if (!angelFileService) {
+        console.error('Angel file service not available');
+        return;
+      }
+
+      const filePath = await angelFileService.saveFileAs(fileContent);
+      if (filePath) {
+        setCurrentFile(filePath);
+        setIsModified(false);
+      }
+    } catch (error) {
+      console.error('Error saving file as:', error);
+    }
+  };
+
+  const handleNewFile = () => {
+    setCurrentFile(null);
+    setFileContent("");
+    setIsModified(false);
+  };
+
+  const handleContentChange = (content: string) => {
+    setFileContent(content);
+    setIsModified(true);
   };
 
   return (
@@ -25,6 +101,10 @@ export default function App() {
       <TopToolbar
         onSerialMonitorToggle={toggleSerialMonitor}
         isSerialMonitorVisible={isSerialMonitorVisible}
+        onOpenFile={handleOpenFile}
+        onSaveFile={handleSaveFile}
+        onNewFile={handleNewFile}
+        isModified={isModified}
       />
 
       {/* --- MAIN LAYOUT: Sidebar | Editor/Monitor | Terminal --- */}
@@ -57,7 +137,12 @@ export default function App() {
               className="min-h-0 overflow-hidden"
             >
               <div className="flex flex-col h-full min-h-0">
-                <CodeEditor />
+                <CodeEditor 
+                  ref={codeEditorRef}
+                  content={fileContent}
+                  filePath={currentFile}
+                  onContentChange={handleContentChange}
+                />
               </div>
             </Panel>
 

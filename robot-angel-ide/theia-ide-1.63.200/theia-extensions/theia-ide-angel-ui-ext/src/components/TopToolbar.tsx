@@ -2,16 +2,25 @@ import * as React from "react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Play, Square, Bug, Settings, FileText, FolderOpen, Save, Zap, Cpu } from "lucide-react";
-// Import the logo from the local assets directory instead of using the figma: prefix
-// Import the logo from the assets folder within components.  The file will be copied to lib/components/assets during build.
 import logoImage from './assets/0619f22ea1d44864927116629fbe5ab4c93093fe.png';
 
 interface TopToolbarProps {
   onSerialMonitorToggle: () => void;
   isSerialMonitorVisible: boolean;
+  onOpenFile: () => void;
+  onSaveFile: () => void;
+  onNewFile: () => void;
+  isModified: boolean;
 }
 
-export function TopToolbar({ onSerialMonitorToggle, isSerialMonitorVisible }: TopToolbarProps) {
+export function TopToolbar({ 
+  onSerialMonitorToggle, 
+  isSerialMonitorVisible,
+  onOpenFile,
+  onSaveFile,
+  onNewFile,
+  isModified
+}: TopToolbarProps) {
   return (
     <div className="h-12 bg-gray-900 border-b border-gray-700 flex items-center px-4">
       
@@ -47,6 +56,7 @@ export function TopToolbar({ onSerialMonitorToggle, isSerialMonitorVisible }: To
         <Button 
           size="sm" 
           variant="ghost"
+          onClick={onNewFile}
           className="text-gray-300 hover:bg-gray-700"
         >
           <FileText className="h-4 w-4 mr-1" />
@@ -56,6 +66,7 @@ export function TopToolbar({ onSerialMonitorToggle, isSerialMonitorVisible }: To
         <Button 
           size="sm" 
           variant="ghost"
+          onClick={onOpenFile}
           className="text-gray-300 hover:bg-gray-700"
         >
           <FolderOpen className="h-4 w-4 mr-1" />
@@ -65,10 +76,11 @@ export function TopToolbar({ onSerialMonitorToggle, isSerialMonitorVisible }: To
         <Button 
           size="sm" 
           variant="ghost"
-          className="text-gray-300 hover:bg-gray-700"
+          onClick={onSaveFile}
+          className={`text-gray-300 hover:bg-gray-700 ${isModified ? 'text-yellow-400' : ''}`}
         >
           <Save className="h-4 w-4 mr-1" />
-          Save
+          Save{isModified ? '*' : ''}
         </Button>
         
         <Button 

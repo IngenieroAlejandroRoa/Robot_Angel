@@ -27,6 +27,7 @@ import '../theia-integration.css';
 // Import terminal service and hook initializer
 import { AngelTerminalService } from './terminal-service';
 import { setTerminalServiceInstance } from '../hooks/useTerminalService';
+import { AngelFileService } from './angel-file-service';
 
 /**
  * AngelWidget wraps the custom React application into a Theia
@@ -38,6 +39,9 @@ import { setTerminalServiceInstance } from '../hooks/useTerminalService';
 export class AngelWidget extends ReactWidget {
     @inject(AngelTerminalService)
     protected readonly terminalService: AngelTerminalService;
+
+    @inject(AngelFileService)
+    protected readonly fileService: AngelFileService;
 
     /**
      * A unique identifier for this widget.  When adding
@@ -69,6 +73,10 @@ export class AngelWidget extends ReactWidget {
         // IMPORTANT: Expose terminal service globally FIRST
         (window as any).angelTerminalService = this.terminalService;
         console.log('Terminal service exposed globally:', this.terminalService);
+        
+        // Expose file service globally
+        (window as any).angelFileService = this.fileService;
+        console.log('File service exposed globally:', this.fileService);
         
         // Also initialize for React hooks
         setTerminalServiceInstance(this.terminalService);
