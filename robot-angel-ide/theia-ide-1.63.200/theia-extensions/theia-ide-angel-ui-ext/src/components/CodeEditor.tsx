@@ -69,8 +69,51 @@ export const CodeEditor = forwardRef((props: CodeEditorProps, ref) => {
     }
   }, [filePath]);
 
-  const handleEditorDidMount = (editor: any) => {
+  const handleEditorDidMount = (editor: any, monaco: any) => {
     editorRef.current = editor;
+    
+    // Define custom theme matching the UI colors
+    monaco.editor.defineTheme('angel-purple', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [
+        { token: 'comment', foreground: '9ca3af', fontStyle: 'italic' },
+        { token: 'keyword', foreground: 'c084fc' },
+        { token: 'string', foreground: '34d399' },
+        { token: 'number', foreground: 'a78bfa' },
+        { token: 'type', foreground: '60a5fa' },
+        { token: 'class', foreground: '60a5fa' },
+        { token: 'function', foreground: 'c084fc' },
+        { token: 'variable', foreground: 'd1d5db' },
+        { token: 'constant', foreground: 'a78bfa' },
+        { token: 'operator', foreground: 'c084fc' },
+      ],
+      colors: {
+        'editor.background': '#111827',
+        'editor.foreground': '#d1d5db',
+        'editor.lineHighlightBackground': '#1f2937',
+        'editorCursor.foreground': '#c084fc',
+        'editor.selectionBackground': '#374151',
+        'editor.inactiveSelectionBackground': '#37415180',
+        'editorLineNumber.foreground': '#6b7280',
+        'editorLineNumber.activeForeground': '#d1d5db',
+        'editorWidget.background': '#1f2937',
+        'editorWidget.border': '#374151',
+        'editorSuggestWidget.background': '#1f2937',
+        'editorSuggestWidget.border': '#374151',
+        'editorSuggestWidget.foreground': '#d1d5db',
+        'editorSuggestWidget.selectedBackground': '#9333ea',
+        'editorSuggestWidget.highlightForeground': '#c084fc',
+        'list.hoverBackground': '#374151',
+        'list.activeSelectionBackground': '#9333ea',
+        'list.inactiveSelectionBackground': '#374151',
+        'editorBracketMatch.background': '#37415180',
+        'editorBracketMatch.border': '#c084fc',
+      }
+    });
+    
+    // Set custom theme as default
+    monaco.editor.setTheme('angel-purple');
     
     // Listen to cursor position changes
     editor.onDidChangeCursorPosition((e: any) => {
@@ -169,7 +212,7 @@ export const CodeEditor = forwardRef((props: CodeEditorProps, ref) => {
             value={localContent}
             onChange={handleEditorChange}
             onMount={handleEditorDidMount}
-            theme="vs-dark"
+            theme="angel-purple"
             options={{
               fontSize: 14,
               fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
@@ -191,6 +234,8 @@ export const CodeEditor = forwardRef((props: CodeEditorProps, ref) => {
               bracketPairColorization: {
                 enabled: true,
               },
+              domReadOnly: false,
+              readOnly: false,
             }}
           />
         )}

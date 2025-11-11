@@ -78,7 +78,7 @@ export default function App() {
       return;
     }
 
-    if (!activeFile) {
+    if (!activeFile || !activeFile.filePath) {
       await handleSaveAsFile();
       return;
     }

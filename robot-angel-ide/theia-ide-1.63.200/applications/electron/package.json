@@ -36,7 +36,7 @@
             "icon": "resources/icons/512x512.png"
           },
           "splashScreenOptions": {
-            "content": "resources/RobotAngelSplash.svg",
+            "content": "/home/ingeniero/Desktop/RobotAngel/logoVectorMejorado.svg",
             "height": 400,
             "width": 400
           }
