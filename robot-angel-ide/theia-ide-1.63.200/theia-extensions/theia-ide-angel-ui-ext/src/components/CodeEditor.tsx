@@ -1,16 +1,13 @@
 import * as React from "react";
-import { useState, useRef, useEffect } from "react";
-import { ScrollArea } from "./ui/scroll-area";
+import { useState, useRef } from "react";
+import Editor from "@monaco-editor/react";
 
 export function CodeEditor() {
   const [cursorPosition, setCursorPosition] = useState({ line: 1, col: 1 });
   const [activeFile, setActiveFile] = useState("main.py");
-  const [language] = useState("Python");
+  const [language] = useState("python");
   const [status, setStatus] = useState("Saved");
-
-  const codeRef = useRef<HTMLPreElement | null>(null);
-
-  const codeContent = `import numpy as np
+  const [code, setCode] = useState(`import numpy as np
 from robot_controller import RobotController
 import time
 
@@ -58,28 +55,34 @@ def main():
         time.sleep(0.1)
 
 if __name__ == "__main__":
-    main()`;
+    main()`);
 
-  // Detect line and column on click
-  const handleClick = (e: React.MouseEvent) => {
-    const selection = window.getSelection();
-    if (!selection || !codeRef.current) return;
+  const editorRef = useRef<any>(null);
 
-    const range = selection.getRangeAt(0);
-    const pre = codeRef.current;
-    const textBeforeCursor = pre.innerText.slice(0, range.startOffset);
-    const lines = textBeforeCursor.split("\n");
-    const line = lines.length;
-    const col = lines[lines.length - 1].length + 1;
+  const handleEditorDidMount = (editor: any) => {
+    editorRef.current = editor;
+    
+    // Listen to cursor position changes
+    editor.onDidChangeCursorPosition((e: any) => {
+      setCursorPosition({
+        line: e.position.lineNumber,
+        col: e.position.column,
+      });
+    });
 
-    setCursorPosition({ line, col });
+    // Listen to content changes
+    editor.onDidChangeModelContent(() => {
+      setStatus("Modified");
+      setTimeout(() => setStatus("Saved"), 1000);
+    });
   };
 
-  // Fake autosave simulation
-  useEffect(() => {
-    const timer = setTimeout(() => setStatus("Saved"), 1000);
-    return () => clearTimeout(timer);
-  }, [cursorPosition]);
+  const handleEditorChange = (value: string | undefined) => {
+    if (value !== undefined) {
+      setCode(value);
+      setStatus("Modified");
+    }
+  };
 
   return (
     <div className="flex flex-col flex-1 bg-gray-900 border-r border-gray-700 min-h-0 overflow-hidden">
@@ -107,82 +110,46 @@ if __name__ == "__main__":
         </div>
       </div>
 
-      {/* Scrollable code area */}
-      <ScrollArea className="flex-1 h-full overflow-auto">
-        <div className="p-4 font-mono text-sm w-max min-w-full">
-          <pre
-            ref={codeRef}
-            onClick={handleClick}
-            className="text-gray-200 leading-relaxed select-text cursor-text"
-          >
-            <code>
-              {codeContent.split("\n").map((line, index) => (
-                <div key={index} className="flex">
-                  <span className="w-12 text-right pr-4 text-gray-500 select-none border-r border-gray-700 mr-4">
-                    {index + 1}
-                  </span>
-                  <span className="flex-1 whitespace-pre">
-                    {line.split("").map((char, charIndex) => {
-                      // Comentarios
-                      if (line.trim().startsWith("#")) {
-                        return (
-                          <span key={charIndex} className="text-green-400">
-                            {char}
-                          </span>
-                        );
-                      }
-                      // Palabras clave
-                      if (
-                        line.includes("def ") ||
-                        line.includes("class ") ||
-                        line.includes("import ") ||
-                        line.includes("from ")
-                      ) {
-                        if (
-                          char === " " &&
-                          (line.includes("def ") ||
-                            line.includes("class ") ||
-                            line.includes("import ") ||
-                            line.includes("from "))
-                        ) {
-                          return (
-                            <span key={charIndex} className="text-purple-400">
-                              {char}
-                            </span>
-                          );
-                        }
-                      }
-                      // Cadenas
-                      if (['"', "'"].includes(char)) {
-                        return (
-                          <span key={charIndex} className="text-yellow-400">
-                            {char}
-                          </span>
-                        );
-                      }
-                      // Paréntesis
-                      if (["(", ")", "[", "]", "{", "}"].includes(char)) {
-                        return (
-                          <span key={charIndex} className="text-gray-300">
-                            {char}
-                          </span>
-                        );
-                      }
-                      return <span key={charIndex}>{char}</span>;
-                    })}
-                  </span>
-                </div>
-              ))}
-            </code>
-          </pre>
-        </div>
-      </ScrollArea>
+      {/* Monaco Editor */}
+      <div className="flex-1 min-h-0">
+        <Editor
+          height="100%"
+          defaultLanguage={language}
+          language={language}
+          value={code}
+          onChange={handleEditorChange}
+          onMount={handleEditorDidMount}
+          theme="vs-dark"
+          options={{
+            fontSize: 14,
+            fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+            minimap: { enabled: true },
+            scrollBeyondLastLine: false,
+            automaticLayout: true,
+            tabSize: 4,
+            insertSpaces: true,
+            wordWrap: "on",
+            lineNumbers: "on",
+            renderWhitespace: "selection",
+            cursorStyle: "line",
+            cursorBlinking: "smooth",
+            smoothScrolling: true,
+            contextmenu: true,
+            folding: true,
+            foldingStrategy: "indentation",
+            showFoldingControls: "always",
+            bracketPairColorization: {
+              enabled: true,
+            },
+          }}
+        />
+      </div>
 
       {/* Status bar */}
       <div className="bg-gray-800 border-t border-gray-700 text-gray-300 text-xs px-4 py-2 flex items-center justify-between font-mono">
         <div className="flex items-center gap-4">
           <span>{activeFile}</span>
-          <span>| {language}</span>
+          <span>| {language.toUpperCase()}</span>
           <span>| Ln {cursorPosition.line}, Col {cursorPosition.col}</span>
         </div>
         <div

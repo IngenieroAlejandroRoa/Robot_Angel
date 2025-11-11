@@ -10,16 +10,7 @@ export function Terminal() {
   const [history, setHistory] = useState([
     { type: "system", content: "RoboIDE Terminal v1.0.0" },
     { type: "system", content: "Robot Control System Ready" },
-    { type: "input", content: "python main.py" },
-    { type: "output", content: "Starting robot control system..." },
-    { type: "output", content: "Robot controller initialized" },
-    { type: "output", content: "Position: [0.0, 0.0, 0.0], Distance: 18.03" },
-    { type: "output", content: "Position: [2.5, 3.8, 0.0], Distance: 14.12" },
-    { type: "output", content: "Position: [5.1, 7.2, 0.0], Distance: 9.85" },
-    { type: "output", content: "Position: [7.8, 11.1, 0.0], Distance: 5.42" },
-    { type: "output", content: "Position: [9.9, 14.8, 0.0], Distance: 0.2" },
-    { type: "success", content: "✓ Target reached!" },
-    { type: "system", content: "Process completed successfully" },
+    { type: "system", content: "Type 'help' for available commands" },
   ]);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -36,10 +27,13 @@ export function Terminal() {
     if (command.trim()) {
       setHistory((prev) => [...prev, { type: "input", content: command }]);
       setCommand("");
+      
+      // Simulate command execution
       setTimeout(() => {
         setHistory((prev) => [
           ...prev,
           { type: "output", content: `Executing: ${command}` },
+          { type: "output", content: "Command processed" },
         ]);
       }, 150);
     }
@@ -127,6 +121,7 @@ export function Terminal() {
             onChange={(e) => setCommand(e.target.value)}
             placeholder="Enter command..."
             className="bg-gray-800 border-gray-600 text-gray-200 font-mono text-sm"
+            autoFocus
           />
         </form>
       </div>

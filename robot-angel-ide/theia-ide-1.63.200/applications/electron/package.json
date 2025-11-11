@@ -2,12 +2,12 @@
   "private": true,
   "name": "theia-ide-electron-app",
   "description": "Eclipse Theia IDE product",
-  "productName": "Theia IDE",
+  "productName": "Robot Angel IDE",
   "version": "1.63.200",
   "main": "scripts/theia-electron-main.js",
   "license": "MIT",
-  "author": "Eclipse Theia <theia-dev@eclipse.org>",
-  "homepage": "https://github.com/eclipse-theia/theia-ide#readme",
+  "author": "Robot Angel Team",
+  "homepage": "https://github.com/RobotAngel",
   "bugs": {
     "url": "https://github.com/eclipse-theia/theia-ide/issues"
   },
@@ -23,7 +23,7 @@
     "target": "electron",
     "frontend": {
       "config": {
-        "applicationName": "Theia IDE",
+        "applicationName": "Robot Angel IDE",
         "reloadOnReconnect": true,
         "preferences": {
           "toolbar.showToolbar": true,
@@ -32,10 +32,13 @@
         },
         "electron": {
           "showWindowEarly": false,
+          "windowOptions": {
+            "icon": "resources/icons/512x512.png"
+          },
           "splashScreenOptions": {
-            "content": "resources/TheiaIDESplash.svg",
-            "height": 276,
-            "width": 446
+            "content": "resources/RobotAngelSplash.svg",
+            "height": 400,
+            "width": 400
           }
         }
       }

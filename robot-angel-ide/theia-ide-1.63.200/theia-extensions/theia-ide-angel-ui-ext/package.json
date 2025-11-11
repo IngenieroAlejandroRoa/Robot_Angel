@@ -3,9 +3,17 @@
   "name": "theia-ide-angel-ui-ext",
   "version": "1.63.200",
   "description": "Robot Angel UI integrado como extensión de Theia",
-  "keywords": ["theia-extension", "robot-angel", "ide-ui"],
-  "files": ["lib", "src"],
+  "keywords": [
+    "theia-extension",
+    "robot-angel",
+    "ide-ui"
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -32,12 +40,15 @@
     "@radix-ui/react-toggle": "^1.1.2",
     "@radix-ui/react-toggle-group": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.8",
+    "@theia/core": "1.63.2",
+    "@theia/terminal": "1.63.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "*",
     "cmdk": "^1.1.1",
     "embla-carousel-react": "^8.6.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.487.0",
+    "monaco-editor": "^0.54.0",
     "next-themes": "^0.4.6",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
@@ -47,10 +58,8 @@
     "recharts": "^2.15.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "*",
-    "vaul": "^1.1.2",
-    "@theia/core": "1.63.2"
-    ,
-    "typescript": "~5.4.5"
+    "typescript": "~5.4.5",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
@@ -61,7 +70,7 @@
     "clean": "rimraf lib *.tsbuildinfo",
     "build": "npm run build:theia && npm run copy:assets",
     "build:theia": "tsc -p .",
-    "copy:assets": "cp -r src/index.css src/theia-integration.css src/assets src/styles src/components lib/ && cp -r src/components/assets lib/components/ 2>/dev/null || true",
+    "copy:assets": "cp -r src/index.css src/theia-integration.css src/assets src/styles src/components src/hooks lib/ && cp -r src/components/assets lib/components/ 2>/dev/null || true",
     "watch:theia": "tsc -p . -w"
   },
   "theiaExtensions": [

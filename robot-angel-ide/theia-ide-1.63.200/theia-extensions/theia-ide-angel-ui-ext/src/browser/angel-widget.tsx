@@ -11,7 +11,7 @@
  */
 
 import * as React from 'react';
-import { injectable, postConstruct } from '@theia/core/shared/inversify';
+import { injectable, postConstruct, inject } from '@theia/core/shared/inversify';
 import { ReactWidget } from '@theia/core/lib/browser/widgets/react-widget';
 
 // Import the root React component of the custom UI.  We keep
@@ -24,6 +24,9 @@ import App from '../App';
 import '../index.css';
 // Import Theia-specific overrides
 import '../theia-integration.css';
+// Import terminal service and hook initializer
+import { AngelTerminalService } from './terminal-service';
+import { setTerminalServiceInstance } from '../hooks/useTerminalService';
 
 /**
  * AngelWidget wraps the custom React application into a Theia
@@ -33,6 +36,9 @@ import '../theia-integration.css';
  */
 @injectable()
 export class AngelWidget extends ReactWidget {
+    @inject(AngelTerminalService)
+    protected readonly terminalService: AngelTerminalService;
+
     /**
      * A unique identifier for this widget.  When adding
      * contributions (see AngelWidgetContribution) you must
@@ -59,6 +65,14 @@ export class AngelWidget extends ReactWidget {
     @postConstruct()
     protected async init(): Promise<void> {
         console.log('AngelWidget init() called');
+        
+        // IMPORTANT: Expose terminal service globally FIRST
+        (window as any).angelTerminalService = this.terminalService;
+        console.log('Terminal service exposed globally:', this.terminalService);
+        
+        // Also initialize for React hooks
+        setTerminalServiceInstance(this.terminalService);
+        
         this.id = AngelWidget.ID;
         this.title.label = AngelWidget.LABEL;
         this.title.caption = AngelWidget.LABEL;
