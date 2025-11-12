@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Play, Square, Bug, Settings, FileText, FolderOpen, Save, Zap, Cpu } from "lucide-react";
@@ -29,6 +30,48 @@ export function TopToolbar({
   onDebug,
   isRunning
 }: TopToolbarProps) {
+  const [isMicroRosRunning, setIsMicroRosRunning] = useState(false);
+
+  const handleMicroRosToggle = async () => {
+    try {
+      // @ts-ignore
+      const terminalBackend = window.angelTerminalBackend;
+      
+      if (!terminalBackend) {
+        console.error('Terminal backend not available');
+        return;
+      }
+
+      if (isMicroRosRunning) {
+        // Stop agent
+        const stopped = await terminalBackend.stopMicroRosAgent();
+        if (stopped) {
+          setIsMicroRosRunning(false);
+          console.log('Micro-ROS agent stopped');
+        }
+      } else {
+        // Start agent with default config
+        const config = {
+          transport: 'udp4',
+          port: 8888,
+          middleware: 'dds',
+          discovery: 7400,
+          verbose: true
+        };
+        
+        const started = await terminalBackend.startMicroRosAgent(config);
+        if (started) {
+          setIsMicroRosRunning(true);
+          console.log('Micro-ROS agent started');
+        } else {
+          console.error('Failed to start micro-ROS agent');
+        }
+      }
+    } catch (error) {
+      console.error('Error toggling micro-ROS agent:', error);
+    }
+  };
+
   return (
     <div className="h-12 bg-gray-900 border-b border-gray-700 flex items-center px-4">
       
@@ -113,10 +156,15 @@ export function TopToolbar({
         
         <Button 
           size="sm" 
-          className="bg-purple-600 hover:bg-purple-700 text-white"
+          className={isMicroRosRunning 
+            ? "bg-green-600 hover:bg-green-700 text-white" 
+            : "bg-purple-600 hover:bg-purple-700 text-white"
+          }
+          onClick={handleMicroRosToggle}
+          title={isMicroRosRunning ? "Stop Micro-ROS Agent" : "Start Micro-ROS Agent"}
         >
           <Cpu className="h-4 w-4 mr-1" />
-          Micro-ROS
+          {isMicroRosRunning ? "Micro-ROS ●" : "Micro-ROS"}
         </Button>
         
         <Button 

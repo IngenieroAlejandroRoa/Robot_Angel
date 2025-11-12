@@ -22,4 +22,17 @@ export interface TerminalBackend {
     isProcessRunning(pid: number): Promise<boolean>;
     getScriptCommand(code: string, language: string): Promise<string>;
     sendInterruptSignal(): Promise<boolean>;
+    startMicroRosAgent(config: MicroRosAgentConfig): Promise<boolean>;
+    stopMicroRosAgent(): Promise<boolean>;
+    isMicroRosAgentRunning(): Promise<boolean>;
+}
+
+export interface MicroRosAgentConfig {
+    transport: 'udp4' | 'udp6' | 'tcp4' | 'tcp6' | 'serial' | 'multiserial' | 'pseudoterminal' | 'canfd';
+    port?: number;
+    device?: string;
+    baudrate?: number;
+    middleware?: 'ced' | 'dds' | 'rtps';
+    discovery?: number;
+    verbose?: boolean;
 }

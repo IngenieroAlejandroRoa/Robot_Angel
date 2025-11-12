@@ -16,6 +16,7 @@ export class TerminalBackendImpl {
     private runningProcesses: Map<number, any> = new Map();
     private processCounter: number = 1;
     private currentExecutionProcess: any = null;
+    private microRosAgentProcess: any = null;
 
     async executeCommand(command: string, cwd?: string): Promise<TerminalCommandResult> {
         const workDir = cwd || this.currentWorkingDirectory;
@@ -379,5 +380,119 @@ export class TerminalBackendImpl {
 
             this.runningProcesses.delete(pid);
         }
+    }
+
+    // ========== Micro-ROS Agent Methods ==========
+
+    private findRosSetup(): string | null {
+        const candidates = [
+            path.join(os.homedir(), 'uros_ws/install/setup.bash'),
+            '/opt/ros/jazzy/setup.bash',
+            '/opt/ros/humble/setup.bash',
+            '/opt/ros/iron/setup.bash',
+        ];
+
+        for (const candidate of candidates) {
+            if (fs.existsSync(candidate)) {
+                return candidate;
+            }
+        }
+        return null;
+    }
+
+    async startMicroRosAgent(config: any): Promise<boolean> {
+        if (this.microRosAgentProcess) {
+            console.log('Micro-ROS agent is already running');
+            return false;
+        }
+
+        // Find ROS setup
+        const rosSetup = this.findRosSetup();
+        if (!rosSetup) {
+            console.error('No ROS 2 setup found. Install ROS 2 or micro-ROS workspace.');
+            return false;
+        }
+
+        // Build command arguments
+        const args: string[] = [];
+        args.push('-m', config.middleware || 'dds');
+        args.push('-d', String(config.discovery || 7400));
+        
+        if (config.verbose) {
+            args.push('-v');
+        }
+
+        const transport = config.transport || 'udp4';
+
+        if (['udp4', 'udp6', 'tcp4', 'tcp6'].includes(transport)) {
+            args.push('-p', String(config.port || 8888));
+        } else if (['serial', 'multiserial', 'pseudoterminal', 'canfd'].includes(transport)) {
+            if (!config.device) {
+                console.error('Device required for serial/multi/canfd transport');
+                return false;
+            }
+            args.push('-D', config.device);
+            if (['serial', 'multiserial', 'pseudoterminal'].includes(transport)) {
+                args.push('-b', String(config.baudrate || 115200));
+            }
+        }
+
+        // Build full command
+        const agentCmd = `ros2 run micro_ros_agent micro_ros_agent ${transport} ${args.join(' ')}`;
+        const fullCmd = `source ${rosSetup} && ${agentCmd}`;
+
+        console.log(`Starting micro-ROS agent: ${agentCmd}`);
+
+        try {
+            this.microRosAgentProcess = exec(fullCmd, {
+                shell: '/bin/bash',
+                maxBuffer: 1024 * 1024
+            });
+
+            this.microRosAgentProcess.stdout?.on('data', (data: any) => {
+                console.log(`[micro-ROS agent] ${data.toString()}`);
+            });
+
+            this.microRosAgentProcess.stderr?.on('data', (data: any) => {
+                console.error(`[micro-ROS agent ERROR] ${data.toString()}`);
+            });
+
+            this.microRosAgentProcess.on('close', (code: number) => {
+                console.log(`Micro-ROS agent exited with code ${code}`);
+                this.microRosAgentProcess = null;
+            });
+
+            this.microRosAgentProcess.on('error', (error: any) => {
+                console.error('Micro-ROS agent error:', error);
+                this.microRosAgentProcess = null;
+            });
+
+            return true;
+        } catch (error) {
+            console.error('Error starting micro-ROS agent:', error);
+            this.microRosAgentProcess = null;
+            return false;
+        }
+    }
+
+    async stopMicroRosAgent(): Promise<boolean> {
+        if (!this.microRosAgentProcess) {
+            console.log('No micro-ROS agent running');
+            return false;
+        }
+
+        try {
+            this.microRosAgentProcess.kill('SIGINT');
+            this.microRosAgentProcess = null;
+            console.log('Micro-ROS agent stopped');
+            return true;
+        } catch (error) {
+            console.error('Error stopping micro-ROS agent:', error);
+            return false;
+        }
+    }
+
+    async isMicroRosAgentRunning(): Promise<boolean> {
+        return this.microRosAgentProcess !== null;
     }
 }
