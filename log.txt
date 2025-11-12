@@ -1,0 +1,269 @@
+DERS_SENT]: Cannot set headers after they are sent to the client
+2025-11-12T17:21:12.297Z root ERROR Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at E.set.E.header (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:976667)
+    at E.send (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:972309)
+    at E.json (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:973417)
+    at i.isInitialized (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13351)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-12T17:21:12.298Z root ERROR Uncaught Exception:  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+2025-11-12T17:21:12.298Z root ERROR Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:699:11)
+    at E.set.E.header (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:976667)
+    at E.send (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:972309)
+    at E.json (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:973417)
+    at i.isInitialized (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:5206)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-11-12T17:21:12.315Z root INFO Start frontend contributions: 464.8 ms [Finished 2.872 s after frontend start]
+2025-11-12T17:21:12.315Z root INFO Changed application state from 'init' to 'started_contributions'.
+12:21:12.586 › APPIMAGE env is not defined, current application is not an AppImage
+2025-11-12T17:21:12.597Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1
+2025-11-12T17:21:12.597Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1-nano
+2025-11-12T17:21:12.597Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1-mini
+2025-11-12T17:21:12.598Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4-turbo
+2025-11-12T17:21:12.598Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4o
+2025-11-12T17:21:12.598Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4o-mini
+2025-11-12T17:21:12.598Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-7-sonnet-20250219
+2025-11-12T17:21:12.599Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-5-haiku-20241022
+2025-11-12T17:21:12.599Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-opus-20240229
+2025-11-12T17:21:12.602Z root WARN Linked preference "workbench.colorCustomizations" not found.
+[56417:1112/122112.607626:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 1 times!
+[56417:1112/122112.608882:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 2 times!
+2025-11-12T17:21:12.807Z root INFO [a30ec503-1e6f-45e1-a634-0e02b47418ba] Waiting for backend deployment: 521.0 ms [Finished 3.391 s after frontend start]
+2025-11-12T17:21:12.973Z root INFO Changed application state from 'started_contributions' to 'attached_shell'.
+2025-11-12T17:21:12.973Z root INFO >>> Restoring the layout state...
+2025-11-12T17:21:13.009Z root INFO AngelTerminalService initialized
+2025-11-12T17:21:13.010Z root INFO AngelWidget init() called
+2025-11-12T17:21:13.010Z root INFO AngelWidget calling update()
+2025-11-12T17:21:13.010Z root INFO Widget isVisible: false
+2025-11-12T17:21:13.011Z root INFO Widget isAttached: false
+2025-11-12T17:21:13.011Z root INFO AngelWidget render() called - rendering full App
+2025-11-12T17:21:13.024Z terminal WARN Couldn't attach - can't find terminal with id: 977623495 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 1194011165 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 1334593893 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 1212617601 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 289509164 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 133974461 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 1105819822 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 107746176 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 1371374891 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 258053553 
+2025-11-12T17:21:13.026Z terminal WARN Couldn't attach - can't find terminal with id: 2001220690 
+2025-11-12T17:21:13.028Z root WARN Couldn't restore widget for robot-angel-ui:widget. Error: Error: You are attempting to construct [function/class n] in a synchronous way but it has asynchronous dependencies. 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 57713398 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 2060739100 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1663281204 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1543363459 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1343573968 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1052641386 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1578405984 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1306145114 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1608869015 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1090295717 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 195068201 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: -1 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 986717666 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1730358187 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1176827703 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1577980157 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 750651496 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1007160988 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1599957919 
+2025-11-12T17:21:13.029Z terminal WARN Couldn't attach - can't find terminal with id: 1296596059 
+2025-11-12T17:21:13.130Z root INFO Application launcher was already initialized.
+2025-11-12T17:21:13.131Z root INFO Desktop file was not updated or created.
+2025-11-12T17:21:13.231Z root INFO Forcing update after timeout
+2025-11-12T17:21:13.232Z root INFO AngelWidget render() called - rendering full App
+2025-11-12T17:21:13.401Z terminal WARN Failed attaching to terminal id 977623495, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 1194011165, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 1334593893, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 1212617601, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 289509164, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 133974461, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 1105819822, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 107746176, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 1371374891, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 258053553, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 2001220690, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 57713398, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.404Z terminal WARN Failed attaching to terminal id 2060739100, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.405Z terminal WARN Failed attaching to terminal id 1663281204, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.405Z terminal WARN Failed attaching to terminal id 1543363459, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.759Z terminal WARN Failed attaching to terminal id 1343573968, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.759Z terminal WARN Failed attaching to terminal id 1052641386, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 1578405984, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 1306145114, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 1608869015, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 1090295717, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 195068201, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id -1, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.762Z terminal WARN Failed attaching to terminal id 986717666, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1730358187, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1176827703, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1577980157, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 750651496, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1007160988, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1599957919, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.763Z terminal WARN Failed attaching to terminal id 1296596059, the terminal is most likely gone. Starting up a new terminal instead.
+2025-11-12T17:21:13.850Z root INFO Terminal service found, creating terminal widget...
+2025-11-12T17:21:14.196Z root INFO <<< The layout has been successfully restored.
+2025-11-12T17:21:14.214Z root INFO Initialize the workbench layout: 1301.5 ms [Finished 4.773 s after frontend start]
+2025-11-12T17:21:14.223Z root INFO Changed application state from 'attached_shell' to 'initialized_layout'.
+2025-11-12T17:21:14.228Z root INFO [a30ec503-1e6f-45e1-a634-0e02b47418ba] Loading plugin contributions
+2025-11-12T17:21:14.556Z root INFO Opening Angel widget after timeout...
+2025-11-12T17:21:14.556Z root INFO Main widgets found: 0
+2025-11-12T17:21:14.556Z root INFO Creating widget via widgetManager (ASYNC)...
+2025-11-12T17:21:15.161Z root INFO Widget ID: robot-angel-ui:widget
+2025-11-12T17:21:15.171Z root INFO Adding widget to main area...
+2025-11-12T17:21:15.171Z root INFO AngelWidget onAfterAttach called
+2025-11-12T17:21:15.171Z root INFO Widget isVisible: true
+2025-11-12T17:21:15.171Z root INFO Widget isAttached: true
+2025-11-12T17:21:15.171Z root INFO Activating widget...
+2025-11-12T17:21:15.171Z root INFO AngelWidget onActivateRequest called
+2025-11-12T17:21:15.175Z root INFO AngelWidget render() called - rendering full App
+2025-11-12T17:21:15.505Z root INFO Setting up terminal listeners, terminalId: -1
+2025-11-12T17:21:15.506Z root INFO Found xterm instance
+2025-11-12T17:21:15.506Z root INFO Terminal buffer available
+2025-11-12T17:21:15.506Z root INFO Terminal widget obtained: -1
+2025-11-12T17:21:15.506Z root INFO ✅ Terminal embedded successfully
+2025-11-12T17:21:15.654Z root INFO Forcing update after attach
+2025-11-12T17:21:15.654Z root INFO AngelWidget render() called - rendering full App
+2025-11-12T17:21:16.061Z root INFO Terminal service found, creating terminal widget...
+2025-11-12T17:21:16.061Z root INFO Terminal widget obtained: -1
+2025-11-12T17:21:16.061Z root INFO ✅ Terminal embedded successfully
+(node:56110) UnhandledPromiseRejectionWarning: Error: Cancelled
+    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:108056)
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:162430
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:127974
+    at s.invoke (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:128063)
+    at a.fire (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:129862)
+    at c.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107260)
+    at t.CancellationTokenSource.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107815)
+    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22275)
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22413
+(Use `electron --trace-warnings ...` to show where the warning was created)
+(node:56110) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+2025-11-12T17:21:16.114Z root INFO Replace loading indicator with ready workbench UI (animation): 1849.7 ms [Finished 6.660 s after frontend start]
+2025-11-12T17:21:16.115Z root INFO Changed application state from 'initialized_layout' to 'ready'.
+2025-11-12T17:21:16.115Z root INFO Frontend application start: 4150.4 ms [Finished 7.893 s after backend start]
+2025-11-12T17:21:17.085Z root INFO Terminal service found, creating terminal widget...
+2025-11-12T17:21:17.086Z root ERROR NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+    at pl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7622095)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623339)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623602)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+2025-11-12T17:21:17.086Z root INFO Terminal widget obtained: -1
+2025-11-12T17:21:17.303Z root INFO Widget isVisible: true
+2025-11-12T17:21:17.317Z root INFO Widget isAttached: true
+2025-11-12T17:21:17.317Z root INFO ✅ Robot Angel UI opened successfully!
+2025-11-12T17:21:17.317Z root WARN Widget was activated, but did not accept focus after 2000ms: robot-angel-ui:widget
+[56417:1112/122134.976957:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 3 times!
+2025-11-12T17:21:38.499Z root INFO AngelWidget onActivateRequest called
+2025-11-12T17:21:38.499Z root INFO AngelWidget render() called - rendering full App
+2025-11-12T17:21:38.526Z root INFO Terminal service found, creating terminal widget...
+2025-11-12T17:21:38.526Z root INFO Terminal widget obtained: -1
+2025-11-12T17:21:38.526Z root INFO ✅ Terminal embedded successfully
+2025-11-12T17:21:38.539Z root INFO Terminal service found, creating terminal widget...
+2025-11-12T17:21:38.539Z root ERROR NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+    at pl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7622095)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623339)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623602)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+    at fl (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623799)
+    at ml (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:7623489)
+2025-11-12T17:21:38.539Z root INFO Terminal widget obtained: -1
+2025-11-12T17:21:40.496Z root WARN Widget was activated, but did not accept focus after 2000ms: robot-angel-ui:widget
+2025-11-12T17:21:42.972Z root INFO socket closed
+2025-11-12T17:21:42.972Z root INFO closing connection for 1
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/localization-server'.
+Closing channel on service path '/services/electron-window'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/os'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/commands'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/logger'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/messageService'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/ChannelCloseService'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/remote-filesystem'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/remote/status'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/envs'.
+Closing channel on service path '/services/theia-updater'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/workspace'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/remote/container'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/remote/port-forwarding'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/keyboard'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/stopwatch'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/vsx-environment'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/application'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/i18n'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/quickInput'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/debug'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/shell-terminal'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/quickPick'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/task'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/search'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/hostedPlugin'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/plugin-ext'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/plugin-paths'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/request-service'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/search-in-workspace'.
+2025-11-12T17:21:42.973Z root INFO Closing channel on service path '/services/anthropic/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/languageModelRegistryDelegatePath'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/languageModelDelegatePath'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/google/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/huggingface/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/mcpservermanager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/llamafilemanager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/ollama/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/open-ai/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/vercel-ai/language-model-manager'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/cli-preferences'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/mini-browser-service'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/measurement-notification'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/plugin-dev'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/external-terminal'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/remote/ssh'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/remote/wsl'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/scanoss/service'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/981102813'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1981022165'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1580487203'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/592147734'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/978370957'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/3732018'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1278361836'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/378669749'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/2034111814'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/2003372080'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/293509438'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1167200838'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/785430516'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/2139833896'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/361278089'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1822285836'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1954243865'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/301912338'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1806574619'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1680546108'.
+2025-11-12T17:21:42.974Z root INFO Closing channel on service path '/services/terminals/1849038018'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/2084687851'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/314818561'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/859602875'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/1407961059'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/1558525815'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/100009237'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/1992993374'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/1424471887'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/910084903'.
+2025-11-12T17:21:42.975Z root INFO Closing channel on service path '/services/terminals/1523643247'.
+Done in 37.68s.
+(robot-angel) ingeniero@LaBestia:~/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200$ 
+

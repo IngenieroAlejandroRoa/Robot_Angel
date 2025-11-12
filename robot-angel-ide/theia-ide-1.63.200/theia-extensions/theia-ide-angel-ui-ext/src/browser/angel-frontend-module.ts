@@ -9,12 +9,13 @@
  */
 
 import { ContainerModule } from '@theia/core/shared/inversify';
-import { bindViewContribution, FrontendApplicationContribution } from '@theia/core/lib/browser';
+import { bindViewContribution, FrontendApplicationContribution, WebSocketConnectionProvider } from '@theia/core/lib/browser';
 import { WidgetFactory } from '@theia/core/lib/browser/widget-manager';
 import { AngelWidget } from './angel-widget';
 import { AngelWidgetContribution } from './angel-contribution';
 import { AngelTerminalService } from './terminal-service';
 import { AngelFileService } from './angel-file-service';
+import { TerminalBackend, TerminalBackendPath } from '../common/terminal-protocol';
 
 export default new ContainerModule(bind => {
     // Register our contribution so it becomes available in the
@@ -30,6 +31,12 @@ export default new ContainerModule(bind => {
 
     // Bind the file service
     bind(AngelFileService).toSelf().inSingletonScope();
+
+    // Bind the terminal backend RPC
+    bind(TerminalBackend).toDynamicValue(ctx => {
+        const connection = ctx.container.get(WebSocketConnectionProvider);
+        return connection.createProxy<TerminalBackend>(TerminalBackendPath);
+    }).inSingletonScope();
 
     // Bind the widget so that the DI container can create it.
     bind(AngelWidget).toSelf().inSingletonScope();

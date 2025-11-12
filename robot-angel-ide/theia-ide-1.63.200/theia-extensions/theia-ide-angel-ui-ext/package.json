@@ -77,7 +77,8 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/angel-frontend-module"
+      "frontend": "lib/browser/angel-frontend-module",
+      "backend": "lib/node/angel-backend-module"
     }
   ]
 }
