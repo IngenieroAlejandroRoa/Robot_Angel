@@ -15,32 +15,62 @@ export class TerminalBackendImpl {
     private currentWorkingDirectory: string = process.cwd();
     private runningProcesses: Map<number, any> = new Map();
     private processCounter: number = 1;
+    private currentExecutionProcess: any = null;
 
     async executeCommand(command: string, cwd?: string): Promise<TerminalCommandResult> {
         const workDir = cwd || this.currentWorkingDirectory;
         
         try {
-            const { stdout, stderr } = await execAsync(command, {
+            // Create a child process that we can kill
+            const childProcess = exec(command, {
                 cwd: workDir,
                 timeout: 30000,
                 maxBuffer: 1024 * 1024,
                 shell: '/bin/bash'
             });
 
+            // Store current process so we can kill it with Stop
+            this.currentExecutionProcess = childProcess;
+
+            // Wait for process to complete
+            const result = await new Promise<TerminalCommandResult>((resolve, reject) => {
+                let stdout = '';
+                let stderr = '';
+
+                childProcess.stdout?.on('data', (data) => {
+                    stdout += data.toString();
+                });
+
+                childProcess.stderr?.on('data', (data) => {
+                    stderr += data.toString();
+                });
+
+                childProcess.on('close', (code) => {
+                    this.currentExecutionProcess = null;
+                    resolve({
+                        output: stdout,
+                        error: stderr,
+                        exitCode: code || 0
+                    });
+                });
+
+                childProcess.on('error', (error) => {
+                    this.currentExecutionProcess = null;
+                    reject(error);
+                });
+            });
+
             if (command.trim().startsWith('cd ')) {
                 const targetDir = command.trim().substring(3).trim();
-                if (targetDir && !stderr) {
+                if (targetDir && !result.error) {
                     const { stdout: newCwd } = await execAsync('pwd', { cwd: targetDir, shell: '/bin/bash' });
                     this.currentWorkingDirectory = newCwd.trim();
                 }
             }
 
-            return {
-                output: stdout,
-                error: stderr,
-                exitCode: 0
-            };
+            return result;
         } catch (error: any) {
+            this.currentExecutionProcess = null;
             return {
                 output: error.stdout || '',
                 error: error.stderr || error.message,
@@ -170,6 +200,19 @@ export class TerminalBackendImpl {
         return procInfo !== undefined && !procInfo.process.killed;
     }
 
+    async sendInterruptSignal(): Promise<boolean> {
+        if (this.currentExecutionProcess) {
+            try {
+                this.currentExecutionProcess.kill('SIGINT'); // Send Ctrl+C signal
+                return true;
+            } catch (error) {
+                console.error('Error sending interrupt signal:', error);
+                return false;
+            }
+        }
+        return false;
+    }
+
     async getScriptCommand(code: string, language: string): Promise<string> {
         const pid = this.processCounter++;
         const tempDir = os.tmpdir();
@@ -186,6 +229,7 @@ export class TerminalBackendImpl {
                 
                 case 'javascript':
                 case 'typescript':
+                case 'js':
                     tempFile = path.join(tempDir, `robot_angel_${pid}.js`);
                     fs.writeFileSync(tempFile, code);
                     command = `node "${tempFile}"`;
@@ -193,6 +237,7 @@ export class TerminalBackendImpl {
                 
                 case 'cpp':
                 case 'c++':
+                case 'c':
                     tempFile = path.join(tempDir, `robot_angel_${pid}.cpp`);
                     const outputFile = path.join(tempDir, `robot_angel_${pid}`);
                     fs.writeFileSync(tempFile, code);
@@ -204,6 +249,98 @@ export class TerminalBackendImpl {
                     });
                     
                     command = `"${outputFile}"`;
+                    break;
+                
+                case 'java':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.java`);
+                    fs.writeFileSync(tempFile, code);
+                    
+                    // Extract class name from code
+                    const classMatch = code.match(/public\s+class\s+(\w+)/);
+                    const className = classMatch ? classMatch[1] : `robot_angel_${pid}`;
+                    
+                    // If class name doesn't match filename, create proper file
+                    if (className !== `robot_angel_${pid}`) {
+                        tempFile = path.join(tempDir, `${className}.java`);
+                        fs.writeFileSync(tempFile, code);
+                    }
+                    
+                    // Compile Java
+                    await execAsync(`javac "${tempFile}"`, {
+                        cwd: tempDir,
+                        timeout: 30000
+                    });
+                    
+                    // Run Java directly from temp directory using absolute path
+                    command = `java -cp "${tempDir}" ${className}`;
+                    break;
+                
+                case 'html':
+                case 'htm':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.html`);
+                    fs.writeFileSync(tempFile, code);
+                    
+                    // Try different browsers in order of preference
+                    const browsers = ['xdg-open', 'google-chrome', 'firefox', 'chromium-browser'];
+                    let browserFound = false;
+                    
+                    for (const browser of browsers) {
+                        try {
+                            await execAsync(`which ${browser}`);
+                            command = `${browser} "${tempFile}"`;
+                            browserFound = true;
+                            break;
+                        } catch (e) {
+                            // Browser not found, try next
+                        }
+                    }
+                    
+                    if (!browserFound) {
+                        // If no browser found, just output the file path
+                        command = `echo "HTML file created at: ${tempFile}" && echo "Open it manually in your browser"`;
+                    }
+                    break;
+                
+                case 'php':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.php`);
+                    fs.writeFileSync(tempFile, code);
+                    command = `php "${tempFile}"`;
+                    break;
+                
+                case 'ruby':
+                case 'rb':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.rb`);
+                    fs.writeFileSync(tempFile, code);
+                    command = `ruby "${tempFile}"`;
+                    break;
+                
+                case 'go':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.go`);
+                    fs.writeFileSync(tempFile, code);
+                    command = `go run "${tempFile}"`;
+                    break;
+                
+                case 'rust':
+                case 'rs':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.rs`);
+                    const rustOutput = path.join(tempDir, `robot_angel_${pid}_rust`);
+                    fs.writeFileSync(tempFile, code);
+                    
+                    // Compile Rust
+                    await execAsync(`rustc "${tempFile}" -o "${rustOutput}"`, {
+                        cwd: this.currentWorkingDirectory,
+                        timeout: 30000
+                    });
+                    
+                    command = `"${rustOutput}"`;
+                    break;
+                
+                case 'sh':
+                case 'bash':
+                    tempFile = path.join(tempDir, `robot_angel_${pid}.sh`);
+                    fs.writeFileSync(tempFile, code);
+                    fs.chmodSync(tempFile, '755');
+                    command = `bash "${tempFile}"`;
                     break;
                 
                 default:

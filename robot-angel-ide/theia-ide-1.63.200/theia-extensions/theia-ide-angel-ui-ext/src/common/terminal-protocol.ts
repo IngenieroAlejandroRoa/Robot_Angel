@@ -20,5 +20,6 @@ export interface TerminalBackend {
     runScript(code: string, language: string): Promise<number>;
     stopProcess(pid: number): Promise<boolean>;
     isProcessRunning(pid: number): Promise<boolean>;
-    getScriptCommand(code: string, language: string): Promise<string>; // Returns command to execute
+    getScriptCommand(code: string, language: string): Promise<string>;
+    sendInterruptSignal(): Promise<boolean>;
 }

@@ -199,7 +199,16 @@ export default function App() {
         const ext = activeFile.filePath.split('.').pop()?.toLowerCase();
         if (ext === 'py') language = 'python';
         else if (ext === 'js') language = 'javascript';
-        else if (ext === 'cpp' || ext === 'c++') language = 'cpp';
+        else if (ext === 'ts') language = 'typescript';
+        else if (ext === 'cpp' || ext === 'c++' || ext === 'cc' || ext === 'cxx') language = 'cpp';
+        else if (ext === 'c') language = 'c';
+        else if (ext === 'java') language = 'java';
+        else if (ext === 'html' || ext === 'htm') language = 'html';
+        else if (ext === 'php') language = 'php';
+        else if (ext === 'rb') language = 'ruby';
+        else if (ext === 'go') language = 'go';
+        else if (ext === 'rs') language = 'rust';
+        else if (ext === 'sh') language = 'bash';
       }
 
       console.log(`Preparing to run ${language} script...`);
@@ -236,17 +245,33 @@ export default function App() {
       return;
     }
 
-    // For now, just reset the state
-    // In the future, could send Ctrl+C to terminal
-    console.log('Stopping execution...');
-    setIsRunning(false);
-    setRunningProcessId(null);
-    
     try {
       // @ts-ignore
-      await window.angelTerminalBackend.executeCommand(`echo "■ Execution stopped by user"`);
+      const terminalBackend = window.angelTerminalBackend;
+      if (!terminalBackend) {
+        console.error('Terminal backend not available');
+        return;
+      }
+
+      console.log('Sending interrupt signal (Ctrl+C)...');
+      const interrupted = await terminalBackend.sendInterruptSignal();
+
+      if (interrupted) {
+        console.log('Interrupt signal sent successfully');
+        // @ts-ignore
+        if (terminalRef.current?.executeCommand) {
+          await terminalRef.current.executeCommand('echo "^C Process interrupted"');
+        }
+      } else {
+        console.log('No process to interrupt');
+      }
+
+      setIsRunning(false);
+      setRunningProcessId(null);
     } catch (error) {
       console.error('Error in stop:', error);
+      setIsRunning(false);
+      setRunningProcessId(null);
     }
   };
 
