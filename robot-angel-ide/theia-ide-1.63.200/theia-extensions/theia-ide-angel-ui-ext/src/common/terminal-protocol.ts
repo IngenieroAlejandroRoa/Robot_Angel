@@ -7,7 +7,18 @@ export interface TerminalCommandResult {
     exitCode: number;
 }
 
+export interface ProcessOutputEvent {
+    pid: number;
+    type: 'stdout' | 'stderr' | 'exit';
+    data: string;
+    exitCode?: number;
+}
+
 export interface TerminalBackend {
     executeCommand(command: string, cwd?: string): Promise<TerminalCommandResult>;
     getWorkingDirectory(): Promise<string>;
+    runScript(code: string, language: string): Promise<number>;
+    stopProcess(pid: number): Promise<boolean>;
+    isProcessRunning(pid: number): Promise<boolean>;
+    getScriptCommand(code: string, language: string): Promise<string>; // Returns command to execute
 }

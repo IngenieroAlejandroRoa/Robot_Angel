@@ -11,6 +11,10 @@ interface TopToolbarProps {
   onSaveFile: () => void;
   onNewFile: () => void;
   isModified: boolean;
+  onRun: () => void;
+  onStop: () => void;
+  onDebug: () => void;
+  isRunning: boolean;
 }
 
 export function TopToolbar({ 
@@ -19,7 +23,11 @@ export function TopToolbar({
   onOpenFile,
   onSaveFile,
   onNewFile,
-  isModified
+  isModified,
+  onRun,
+  onStop,
+  onDebug,
+  isRunning
 }: TopToolbarProps) {
   return (
     <div className="h-12 bg-gray-900 border-b border-gray-700 flex items-center px-4">
@@ -27,16 +35,20 @@ export function TopToolbar({
       <div className="flex items-center gap-2">
         <Button 
           size="sm" 
-          className="bg-purple-600 hover:bg-purple-700 text-white"
+          className={`${isRunning ? 'bg-green-600 hover:bg-green-700' : 'bg-purple-600 hover:bg-purple-700'} text-white`}
+          onClick={onRun}
+          disabled={isRunning}
         >
           <Play className="h-4 w-4 mr-1" />
-          Run
+          {isRunning ? 'Running...' : 'Run'}
         </Button>
         
         <Button 
           size="sm" 
           variant="outline"
           className="border-gray-600 bg-gray-800 hover:bg-gray-700 text-gray-200"
+          onClick={onDebug}
+          disabled={isRunning}
         >
           <Bug className="h-4 w-4 mr-1" />
           Debug
@@ -45,7 +57,9 @@ export function TopToolbar({
         <Button 
           size="sm" 
           variant="outline"
-          className="border-gray-600 bg-gray-800 hover:bg-gray-700 text-gray-200"
+          className={`border-gray-600 ${isRunning ? 'bg-red-600 hover:bg-red-700 text-white' : 'bg-gray-800 hover:bg-gray-700 text-gray-200'}`}
+          onClick={onStop}
+          disabled={!isRunning}
         >
           <Square className="h-4 w-4 mr-1" />
           Stop

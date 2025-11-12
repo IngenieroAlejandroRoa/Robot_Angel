@@ -23,8 +23,11 @@ export default function App() {
   const [isSerialMonitorVisible, setIsSerialMonitorVisible] = useState(false);
   const [openFiles, setOpenFiles] = useState<FileTab[]>([]);
   const [activeFileId, setActiveFileId] = useState<string | null>(null);
+  const [isRunning, setIsRunning] = useState(false);
+  const [runningProcessId, setRunningProcessId] = useState<number | null>(null);
   
   const codeEditorRef = useRef<any>(null);
+  const terminalRef = useRef<any>(null);
 
   const activeFile = openFiles.find(f => f.id === activeFileId);
 
@@ -171,6 +174,106 @@ export default function App() {
     setActiveFileId(fileId);
   };
 
+  const handleRun = async () => {
+    if (isRunning) {
+      console.log('Already running a process');
+      return;
+    }
+
+    if (!activeFile || !activeFile.content) {
+      console.log('No active file or empty content');
+      return;
+    }
+
+    try {
+      // @ts-ignore
+      const terminalBackend = window.angelTerminalBackend;
+      if (!terminalBackend) {
+        console.error('Terminal backend not available');
+        return;
+      }
+
+      // Determine language from file extension
+      let language = 'bash';
+      if (activeFile.filePath) {
+        const ext = activeFile.filePath.split('.').pop()?.toLowerCase();
+        if (ext === 'py') language = 'python';
+        else if (ext === 'js') language = 'javascript';
+        else if (ext === 'cpp' || ext === 'c++') language = 'cpp';
+      }
+
+      console.log(`Preparing to run ${language} script...`);
+      setIsRunning(true);
+
+      // Get the command to execute
+      const command = await terminalBackend.getScriptCommand(activeFile.content, language);
+      
+      console.log(`Executing command: ${command}`);
+
+      // Execute the command in the terminal (this will show output in the IDE terminal)
+      if (terminalRef.current && terminalRef.current.executeCommand) {
+        await terminalRef.current.executeCommand(command);
+      } else {
+        // Fallback to direct backend call
+        await terminalBackend.executeCommand(command);
+      }
+      
+      setIsRunning(false);
+      setRunningProcessId(null);
+
+      console.log(`Script execution completed`);
+
+    } catch (error) {
+      console.error('Error running script:', error);
+      setIsRunning(false);
+      setRunningProcessId(null);
+    }
+  };
+
+  const handleStop = async () => {
+    if (!isRunning) {
+      console.log('No process running');
+      return;
+    }
+
+    // For now, just reset the state
+    // In the future, could send Ctrl+C to terminal
+    console.log('Stopping execution...');
+    setIsRunning(false);
+    setRunningProcessId(null);
+    
+    try {
+      // @ts-ignore
+      await window.angelTerminalBackend.executeCommand(`echo "■ Execution stopped by user"`);
+    } catch (error) {
+      console.error('Error in stop:', error);
+    }
+  };
+
+  const handleDebug = async () => {
+    // For now, just run with debug info
+    if (isRunning) {
+      console.log('Already running a process');
+      return;
+    }
+
+    if (!activeFile || !activeFile.content) {
+      console.log('No active file or empty content');
+      return;
+    }
+
+    try {
+      // @ts-ignore
+      const angelTerminalBackend = window.angelTerminalBackend;
+      await angelTerminalBackend.executeCommand(`echo "🐛 Debug mode (running with verbose output)..."`);
+      
+      // Run normally for now (in future could add debug flags)
+      await handleRun();
+    } catch (error) {
+      console.error('Error in debug mode:', error);
+    }
+  };
+
   return (
     <div className="h-screen bg-gray-900 flex flex-col dark">
       {/* --- TOP TOOLBAR --- */}
@@ -181,6 +284,10 @@ export default function App() {
         onSaveFile={handleSaveFile}
         onNewFile={handleNewFile}
         isModified={activeFile?.isModified || false}
+        onRun={handleRun}
+        onStop={handleStop}
+        onDebug={handleDebug}
+        isRunning={isRunning}
       />
 
       {/* --- MAIN LAYOUT: Sidebar | Editor/Monitor | Terminal --- */}
@@ -252,7 +359,7 @@ export default function App() {
           maxSize={40}
           className="min-h-0 overflow-hidden"
         >
-          <Terminal />
+          <Terminal ref={terminalRef} />
         </Panel>
       </PanelGroup>
     </div>

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from "react";
 import { Terminal as TerminalIcon, ChevronDown } from "lucide-react";
 
-export function Terminal() {
+export const Terminal = forwardRef((props, ref) => {
   const [command, setCommand] = useState("");
   const [autoScroll, setAutoScroll] = useState(true);
   const [history, setHistory] = useState([
@@ -16,6 +16,13 @@ export function Terminal() {
   const [currentDir, setCurrentDir] = useState("");
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  // Expose executeCommand method to parent
+  useImperativeHandle(ref, () => ({
+    executeCommand: async (cmd: string) => {
+      return await executeCommandInternal(cmd);
+    }
+  }));
 
   // Get initial working directory
   useEffect(() => {
@@ -35,71 +42,75 @@ export function Terminal() {
     el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [history, autoScroll]);
 
+  const executeCommandInternal = async (cmd: string) => {
+    setIsExecuting(true);
+    
+    // Add command to history
+    setHistory((prev) => [...prev, { type: "input", content: cmd }]);
+    
+    try {
+      const terminalBackend = (window as any).angelTerminalBackend;
+      
+      if (!terminalBackend) {
+        setHistory((prev) => [...prev, { 
+          type: "error", 
+          content: "Terminal backend not available" 
+        }]);
+        setIsExecuting(false);
+        return;
+      }
+
+      // Execute command
+      const result = await terminalBackend.executeCommand(cmd, currentDir);
+      
+      // Update working directory
+      const newDir = await terminalBackend.getWorkingDirectory();
+      if (newDir !== currentDir) {
+        setCurrentDir(newDir);
+      }
+      
+      // Show output
+      if (result.output) {
+        const outputLines = result.output.trim().split('\n');
+        setHistory((prev) => [
+          ...prev,
+          ...outputLines.map((line: string) => ({ type: "output" as const, content: line }))
+        ]);
+      }
+      
+      // Show errors
+      if (result.error) {
+        const errorLines = result.error.trim().split('\n');
+        setHistory((prev) => [
+          ...prev,
+          ...errorLines.map((line: string) => ({ type: "error" as const, content: line }))
+        ]);
+      }
+      
+      // Show exit code if non-zero
+      if (result.exitCode !== 0 && !result.output && !result.error) {
+        setHistory((prev) => [...prev, { 
+          type: "error", 
+          content: `Command exited with code ${result.exitCode}` 
+        }]);
+      }
+      
+    } catch (error) {
+      setHistory((prev) => [...prev, { 
+        type: "error", 
+        content: `Error: ${error}` 
+      }]);
+    } finally {
+      setIsExecuting(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (command.trim() && !isExecuting) {
       const cmd = command.trim();
       setCommand("");
-      setIsExecuting(true);
-      
-      // Add command to history
-      setHistory((prev) => [...prev, { type: "input", content: cmd }]);
-      
-      try {
-        const terminalBackend = (window as any).angelTerminalBackend;
-        
-        if (!terminalBackend) {
-          setHistory((prev) => [...prev, { 
-            type: "error", 
-            content: "Terminal backend not available" 
-          }]);
-          setIsExecuting(false);
-          return;
-        }
-
-        // Execute command
-        const result = await terminalBackend.executeCommand(cmd, currentDir);
-        
-        // Update working directory
-        const newDir = await terminalBackend.getWorkingDirectory();
-        if (newDir !== currentDir) {
-          setCurrentDir(newDir);
-        }
-        
-        // Show output
-        if (result.output) {
-          const outputLines = result.output.trim().split('\n');
-          setHistory((prev) => [
-            ...prev,
-            ...outputLines.map((line: string) => ({ type: "output" as const, content: line }))
-          ]);
-        }
-        
-        // Show errors
-        if (result.error) {
-          const errorLines = result.error.trim().split('\n');
-          setHistory((prev) => [
-            ...prev,
-            ...errorLines.map((line: string) => ({ type: "error" as const, content: line }))
-          ]);
-        }
-        
-        // Show exit code if non-zero
-        if (result.exitCode !== 0 && !result.output && !result.error) {
-          setHistory((prev) => [...prev, { 
-            type: "error", 
-            content: `Command exited with code ${result.exitCode}` 
-          }]);
-        }
-        
-      } catch (error) {
-        setHistory((prev) => [...prev, { 
-          type: "error", 
-          content: `Error: ${error}` 
-        }]);
-      } finally {
-        setIsExecuting(false);
-      }
+      await executeCommandInternal(cmd);
     }
   };
 
@@ -198,4 +209,4 @@ export function Terminal() {
       </div>
     </div>
   );
-}
+});
