@@ -9,7 +9,7 @@ import {
 import { TopToolbar } from "./components/TopToolbar";
 import { SidebarPanel } from "./components/SidebarPanel";
 import { CodeEditor } from "./components/CodeEditor";
-import { Terminal } from "./components/Terminal";
+import { TerminalPanel } from "./components/TerminalPanel";
 import { SerialMonitor } from "./components/SerialMonitor";
 
 interface FileTab {
@@ -384,7 +384,7 @@ export default function App() {
           maxSize={40}
           className="min-h-0 overflow-hidden"
         >
-          <Terminal ref={terminalRef} />
+          <TerminalPanel ref={terminalRef} />
         </Panel>
       </PanelGroup>
     </div>

@@ -150,7 +150,7 @@ export const Terminal = forwardRef((props, ref) => {
     <div className="bg-gray-900 flex flex-col min-h-0 h-full w-full">
       {/* Header */}
       <div className="bg-gray-800 border-b border-gray-700 flex items-center px-4 py-1.5 justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center flex-1">
           <TerminalIcon className="h-4 w-4 text-purple-400 mr-2" />
           <span className="text-gray-200 text-sm">Terminal</span>
         </div>
