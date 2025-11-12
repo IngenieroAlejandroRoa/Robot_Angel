@@ -13,13 +13,61 @@ export const TerminalPanel = forwardRef((props, ref) => {
   const [terminals, setTerminals] = useState<TerminalInstance[]>([
     { id: "terminal-0", ref: React.createRef() }
   ]);
+  
+  // Track the terminal ref where micro-ROS is running
+  const microRosTerminalRef = useRef<React.RefObject<any> | null>(null);
 
-  // Expose method to execute command in first terminal
+  // Expose methods to parent
   useImperativeHandle(ref, () => ({
     executeCommand: async (cmd: string) => {
       if (terminals.length > 0 && terminals[0].ref.current) {
         return await terminals[0].ref.current.executeCommand(cmd);
       }
+    },
+    executeInNewTerminal: async (cmd: string, label?: string) => {
+      // Add new terminal
+      const newId = `terminal-${Date.now()}`;
+      const newRef = React.createRef<any>();
+      
+      // Store this ref as the micro-ROS terminal if this is a micro-ROS command
+      if (cmd.includes('micro_ros_agent')) {
+        microRosTerminalRef.current = newRef;
+      }
+      
+      setTerminals(prev => [
+        ...prev,
+        { id: newId, ref: newRef }
+      ]);
+      
+      // Wait for terminal to be created and execute command
+      setTimeout(async () => {
+        if (newRef.current && typeof newRef.current.executeCommand === 'function') {
+          await newRef.current.executeCommand(cmd);
+        }
+      }, 500);
+      
+      return newRef;
+    },
+    stopMicroRos: async () => {
+      // Send Ctrl+C to the specific terminal where micro-ROS is running
+      if (microRosTerminalRef.current && microRosTerminalRef.current.current) {
+        try {
+          // Find the terminal index
+          const terminalIndex = terminals.findIndex(t => t.ref === microRosTerminalRef.current);
+          
+          if (terminalIndex !== -1 && terminals[terminalIndex].ref.current) {
+            // Send Ctrl+C to stop the process
+            await terminals[terminalIndex].ref.current.sendInterrupt();
+            microRosTerminalRef.current = null;
+            return true;
+          }
+        } catch (error) {
+          console.error('Error stopping micro-ROS:', error);
+        }
+      }
+      // If no terminal ref, consider it stopped
+      microRosTerminalRef.current = null;
+      return true;
     }
   }));
 
@@ -36,6 +84,13 @@ export const TerminalPanel = forwardRef((props, ref) => {
     if (terminals.length === 1) {
       return;
     }
+    
+    // If the terminal being removed is the micro-ROS terminal, clear the ref
+    const terminalToRemove = terminals.find(t => t.id === id);
+    if (terminalToRemove && microRosTerminalRef.current === terminalToRemove.ref) {
+      microRosTerminalRef.current = null;
+    }
+    
     setTerminals(prev => prev.filter(t => t.id !== id));
   };
 

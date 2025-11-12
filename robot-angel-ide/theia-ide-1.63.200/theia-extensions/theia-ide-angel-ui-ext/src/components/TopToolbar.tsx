@@ -16,6 +16,7 @@ interface TopToolbarProps {
   onStop: () => void;
   onDebug: () => void;
   isRunning: boolean;
+  terminalRef?: React.RefObject<any>;
 }
 
 export function TopToolbar({ 
@@ -28,7 +29,8 @@ export function TopToolbar({
   onRun,
   onStop,
   onDebug,
-  isRunning
+  isRunning,
+  terminalRef
 }: TopToolbarProps) {
   const [isMicroRosRunning, setIsMicroRosRunning] = useState(false);
 
@@ -43,28 +45,39 @@ export function TopToolbar({
       }
 
       if (isMicroRosRunning) {
-        // Stop agent
-        const stopped = await terminalBackend.stopMicroRosAgent();
-        if (stopped) {
+        // Stop agent - send Ctrl+C to the specific micro-ROS terminal
+        if (terminalRef && terminalRef.current && terminalRef.current.stopMicroRos) {
+          await terminalRef.current.stopMicroRos();
           setIsMicroRosRunning(false);
           console.log('Micro-ROS agent stopped');
         }
       } else {
-        // Start agent with default config
+        // Start agent in new terminal
         const config = {
           transport: 'udp4',
           port: 8888,
-          middleware: 'dds',
-          discovery: 7400,
-          verbose: true
+          verbose: 6
         };
         
-        const started = await terminalBackend.startMicroRosAgent(config);
-        if (started) {
+        // Find ROS setup and build command
+        const setupPath = await terminalBackend.findRosSetup();
+        if (!setupPath) {
+          console.error('No ROS 2 setup found');
+          return;
+        }
+        
+        // Build the command - micro_ros_agent syntax: <transport> [options]
+        let command = `source ${setupPath} && ros2 run micro_ros_agent micro_ros_agent ${config.transport}`;
+        if (config.port) command += ` --port ${config.port}`;
+        if (config.verbose) command += ` --verbose ${config.verbose}`;
+        
+        // Execute in new terminal
+        if (terminalRef && terminalRef.current && terminalRef.current.executeInNewTerminal) {
+          await terminalRef.current.executeInNewTerminal(command);
           setIsMicroRosRunning(true);
-          console.log('Micro-ROS agent started');
+          console.log('Micro-ROS agent started in new terminal');
         } else {
-          console.error('Failed to start micro-ROS agent');
+          console.error('Terminal reference not available');
         }
       }
     } catch (error) {

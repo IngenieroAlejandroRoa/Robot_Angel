@@ -12,7 +12,7 @@ export const TerminalBackendPath = '/services/angel-terminal-backend';
 
 @injectable()
 export class TerminalBackendImpl {
-    private currentWorkingDirectory: string = process.cwd();
+    private currentWorkingDirectory: string = os.homedir();
     private runningProcesses: Map<number, any> = new Map();
     private processCounter: number = 1;
     private currentExecutionProcess: any = null;
@@ -272,8 +272,8 @@ export class TerminalBackendImpl {
                         timeout: 30000
                     });
                     
-                    // Run Java directly from temp directory using absolute path
-                    command = `java -cp "${tempDir}" ${className}`;
+                    // Run Java from temp directory with cd first
+                    command = `cd "${tempDir}" && java ${className}`;
                     break;
                 
                 case 'html':
@@ -288,7 +288,8 @@ export class TerminalBackendImpl {
                     for (const browser of browsers) {
                         try {
                             await execAsync(`which ${browser}`);
-                            command = `${browser} "${tempFile}"`;
+                            // Open in background to not block terminal, and suppress most errors
+                            command = `${browser} "${tempFile}" > /dev/null 2>&1 & echo "Opening ${tempFile} in browser..."`;
                             browserFound = true;
                             break;
                         } catch (e) {
@@ -384,7 +385,7 @@ export class TerminalBackendImpl {
 
     // ========== Micro-ROS Agent Methods ==========
 
-    private findRosSetup(): string | null {
+    async findRosSetup(): Promise<string | null> {
         const candidates = [
             path.join(os.homedir(), 'uros_ws/install/setup.bash'),
             '/opt/ros/jazzy/setup.bash',
@@ -407,7 +408,7 @@ export class TerminalBackendImpl {
         }
 
         // Find ROS setup
-        const rosSetup = this.findRosSetup();
+        const rosSetup = await this.findRosSetup();
         if (!rosSetup) {
             console.error('No ROS 2 setup found. Install ROS 2 or micro-ROS workspace.');
             return false;

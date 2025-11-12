@@ -25,6 +25,7 @@ export interface TerminalBackend {
     startMicroRosAgent(config: MicroRosAgentConfig): Promise<boolean>;
     stopMicroRosAgent(): Promise<boolean>;
     isMicroRosAgentRunning(): Promise<boolean>;
+    findRosSetup(): Promise<string | null>;
 }
 
 export interface MicroRosAgentConfig {

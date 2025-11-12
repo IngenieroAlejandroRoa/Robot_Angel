@@ -313,6 +313,7 @@ export default function App() {
         onStop={handleStop}
         onDebug={handleDebug}
         isRunning={isRunning}
+        terminalRef={terminalRef}
       />
 
       {/* --- MAIN LAYOUT: Sidebar | Editor/Monitor | Terminal --- */}

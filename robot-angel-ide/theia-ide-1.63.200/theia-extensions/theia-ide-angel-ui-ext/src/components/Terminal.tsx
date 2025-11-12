@@ -21,16 +21,38 @@ export const Terminal = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     executeCommand: async (cmd: string) => {
       return await executeCommandInternal(cmd);
+    },
+    sendInterrupt: async () => {
+      // Send Ctrl+C (SIGINT) signal
+      const terminalBackend = (window as any).angelTerminalBackend;
+      if (terminalBackend && terminalBackend.sendInterruptSignal) {
+        const result = await terminalBackend.sendInterruptSignal();
+        if (result) {
+          setHistory((prev) => [...prev, { type: "system", content: "^C" }]);
+        }
+        return result;
+      }
+      return false;
     }
   }));
 
-  // Get initial working directory
+  // Get initial working directory and set to home
   useEffect(() => {
     const terminalBackend = (window as any).angelTerminalBackend;
     if (terminalBackend) {
-      terminalBackend.getWorkingDirectory().then((dir: string) => {
-        setCurrentDir(dir);
-        setHistory(prev => [...prev, { type: "system", content: `Working directory: ${dir}` }]);
+      // Start from home directory
+      const homeDir = require('os').homedir ? require('os').homedir() : '~';
+      terminalBackend.executeCommand(`cd ${homeDir}`, '').then(() => {
+        terminalBackend.getWorkingDirectory().then((dir: string) => {
+          setCurrentDir(dir);
+          setHistory(prev => [...prev, { type: "system", content: `Starting in: ${dir}` }]);
+        });
+      }).catch(() => {
+        // Fallback if changing directory fails
+        terminalBackend.getWorkingDirectory().then((dir: string) => {
+          setCurrentDir(dir);
+          setHistory(prev => [...prev, { type: "system", content: `Working directory: ${dir}` }]);
+        });
       });
     }
   }, []);
