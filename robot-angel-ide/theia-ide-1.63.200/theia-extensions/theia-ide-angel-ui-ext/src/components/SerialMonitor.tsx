@@ -10,25 +10,74 @@ import {
   SelectValue,
 } from "./ui/select";
 import { useEffect, useRef, useState } from "react";
-import { Zap, Send, ChevronDown } from "lucide-react";
+import { Zap, Send, ChevronDown, RefreshCw } from "lucide-react";
 
 export function SerialMonitor() {
   const [message, setMessage] = useState("");
   const [isConnected, setIsConnected] = useState(false);
   const [autoScroll, setAutoScroll] = useState(true);
-  const [selectedPort, setSelectedPort] = useState("COM3");
+  const [selectedPort, setSelectedPort] = useState("");
+  const [availablePorts, setAvailablePorts] = useState<string[]>([]);
+  const [isLoadingPorts, setIsLoadingPorts] = useState(false);
   const [baudRate, setBaudRate] = useState("9600");
   const [serialData, setSerialData] = useState([
-    { type: "system", content: "Serial Monitor v1.0.0", timestamp: "10:15:32" },
-    { type: "system", content: "Available ports: COM3, COM4, COM5", timestamp: "10:15:32" },
-    { type: "connect", content: "Connected to COM3 at 9600 baud", timestamp: "10:15:35" },
-    { type: "receive", content: "Robot initialized", timestamp: "10:15:36" },
-    { type: "receive", content: "Sensor calibration complete", timestamp: "10:15:37" },
+    { type: "system", content: "Serial Monitor v1.0.0", timestamp: new Date().toLocaleTimeString() },
   ]);
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   
+  // Load available serial ports
+  const loadSerialPorts = async () => {
+    setIsLoadingPorts(true);
+    try {
+      // @ts-ignore - Access global board manager backend
+      const boardManagerBackend = window.boardManagerBackend;
+      
+      if (boardManagerBackend) {
+        const ports = await boardManagerBackend.getSerialPorts();
+        setAvailablePorts(ports);
+        
+        const timestamp = new Date().toLocaleTimeString();
+        if (ports.length > 0) {
+          setSerialData((prev) => [
+            ...prev,
+            { type: "system", content: `Available ports: ${ports.join(', ')}`, timestamp },
+          ]);
+          
+          // Auto-select first port if none selected
+          if (!selectedPort && ports.length > 0) {
+            setSelectedPort(ports[0]);
+          }
+        } else {
+          setSerialData((prev) => [
+            ...prev,
+            { type: "system", content: "No serial ports found", timestamp },
+          ]);
+        }
+      } else {
+        console.error('Board manager backend not available');
+        setSerialData((prev) => [
+          ...prev,
+          { type: "error", content: "Board manager service not available", timestamp: new Date().toLocaleTimeString() },
+        ]);
+      }
+    } catch (error) {
+      console.error('Failed to load serial ports:', error);
+      setSerialData((prev) => [
+        ...prev,
+        { type: "error", content: `Error loading ports: ${error}`, timestamp: new Date().toLocaleTimeString() },
+      ]);
+    } finally {
+      setIsLoadingPorts(false);
+    }
+  };
+
+  // Load ports on component mount
+  useEffect(() => {
+    loadSerialPorts();
+  }, []);
+
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || !autoScroll) return;
@@ -110,16 +159,30 @@ export function SerialMonitor() {
           
           <div className="flex items-center gap-2">
             <span className="text-gray-400 text-sm">Port:</span>
-            <Select value={selectedPort} onValueChange={setSelectedPort}>
-              <SelectTrigger className="w-24 h-8 bg-gray-700 border-gray-600 text-gray-200 text-sm">
-                <SelectValue />
+            <Select value={selectedPort} onValueChange={setSelectedPort} disabled={isConnected}>
+              <SelectTrigger className="w-32 h-8 bg-gray-700 border-gray-600 text-gray-200 text-sm">
+                <SelectValue placeholder="Select port" />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-600 text-gray-200 z-50 shadow-lg">
-                <SelectItem value="COM3">COM3</SelectItem>
-                <SelectItem value="COM4">COM4</SelectItem>
-                <SelectItem value="COM5">COM5</SelectItem>
+                {availablePorts.length === 0 ? (
+                  <SelectItem value="no-ports" disabled>No ports found</SelectItem>
+                ) : (
+                  availablePorts.map((port) => (
+                    <SelectItem key={port} value={port}>{port}</SelectItem>
+                  ))
+                )}
               </SelectContent>
             </Select>
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={loadSerialPorts}
+              disabled={isLoadingPorts || isConnected}
+              title="Refresh ports"
+              className="h-8 w-8 p-0 text-gray-400 hover:text-gray-200"
+            >
+              <RefreshCw className={`h-4 w-4 ${isLoadingPorts ? 'animate-spin' : ''}`} />
+            </Button>
           </div>
 
           

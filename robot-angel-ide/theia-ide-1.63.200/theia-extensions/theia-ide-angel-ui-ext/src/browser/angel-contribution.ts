@@ -16,6 +16,7 @@ import {
 } from '@theia/core/lib/browser';
 import { Command, CommandRegistry } from '@theia/core/lib/common';
 import { AngelWidget } from './angel-widget';
+import { BoardManagerService } from './board-manager-service';
 
 /**
  * A command used to open or toggle the Robot Angel UI.  The
@@ -38,6 +39,9 @@ export class AngelWidgetContribution extends AbstractViewContribution<AngelWidge
     
     @inject(WidgetManager)
     protected readonly widgetManager!: WidgetManager;
+    
+    @inject(BoardManagerService)
+    protected readonly boardManagerService!: BoardManagerService;
     
     constructor() {
         super({
@@ -68,6 +72,10 @@ export class AngelWidgetContribution extends AbstractViewContribution<AngelWidge
      */
     async onStart(app: FrontendApplication): Promise<void> {
         console.log('AngelWidgetContribution onStart() called');
+        
+        // Expose board manager service globally for SerialMonitor component
+        (window as any).boardManagerBackend = this.boardManagerService;
+        console.log('Board manager service exposed globally');
         
         // Wait for the shell to be fully attached and ready
         await app.shell.pendingUpdates;
