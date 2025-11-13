@@ -1,121 +1,96 @@
-90:21)
-2025-11-13T00:17:35.341Z root ERROR Board detection failed: 
-2025-11-13T00:17:40.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at t.CancellationTokenSource.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107815)
+    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22275)
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22413
+(Use `electron --trace-warnings ...` to show where the warning was created)
+(node:275374) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+2025-11-13T02:02:43.577Z root INFO Widget isVisible: true
+2025-11-13T02:02:43.578Z root INFO Widget isAttached: true
+2025-11-13T02:02:43.578Z root INFO ✅ Robot Angel UI opened successfully!
+2025-11-13T02:02:43.763Z root WARN Widget was activated, but did not accept focus after 2000ms: robot-angel-ui:widget
+2025-11-13T02:02:45.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:17:40.341Z root ERROR Board detection failed: 
-2025-11-13T00:17:45.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:02:45.371Z root ERROR Board detection failed: 
+2025-11-13T02:02:50.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:17:45.341Z root ERROR Board detection failed: 
-2025-11-13T00:17:50.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:02:50.371Z root ERROR Board detection failed: 
+2025-11-13T02:02:55.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:17:50.341Z root ERROR Board detection failed: 
-2025-11-13T00:17:55.334Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:02:55.371Z root ERROR Board detection failed: 
+2025-11-13T02:03:00.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:17:55.334Z root ERROR Board detection failed: 
-2025-11-13T00:17:55.350Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:00.370Z root ERROR Board detection failed: 
+2025-11-13T02:03:05.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:17:55.350Z root ERROR Board detection failed: 
-2025-11-13T00:18:00.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:05.370Z root ERROR Board detection failed: 
+2025-11-13T02:03:10.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:00.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:05.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:10.371Z root ERROR Board detection failed: 
+[275682:1112/210311.248593:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 2 times!
+2025-11-13T02:03:15.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:05.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:10.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:15.371Z root ERROR Board detection failed: 
+[275682:1112/210317.864936:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 3 times!
+2025-11-13T02:03:20.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:10.342Z root ERROR Board detection failed: 
-2025-11-13T00:18:15.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:20.370Z root ERROR Board detection failed: 
+2025-11-13T02:03:23.137Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:15.342Z root ERROR Board detection failed: 
-2025-11-13T00:18:16.364Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:23.137Z root ERROR Board detection failed: 
+2025-11-13T02:03:25.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:16.365Z root ERROR Board detection failed: 
-2025-11-13T00:18:20.245Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:25.374Z root ERROR Board detection failed: 
+2025-11-13T02:03:30.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:20.246Z root ERROR Board detection failed: 
-2025-11-13T00:18:20.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:30.371Z root ERROR Board detection failed: 
+2025-11-13T02:03:33.450Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:20.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:25.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:33.451Z root ERROR Board detection failed: 
+2025-11-13T02:03:35.371Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:25.342Z root ERROR Board detection failed: 
-2025-11-13T00:18:30.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:35.371Z root ERROR Board detection failed: 
+2025-11-13T02:03:40.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:30.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:35.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:40.370Z root ERROR Board detection failed: 
+2025-11-13T02:03:45.371Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:35.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:40.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:45.372Z root ERROR Board detection failed: 
+2025-11-13T02:03:50.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:40.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:45.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+2025-11-13T02:03:50.370Z root ERROR Board detection failed: 
+2025-11-13T02:03:55.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
     at ChildProcess._handle.onexit (node:internal/child_process:285:19)
     at onErrorNT (node:internal/child_process:483:16)
     at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:45.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:46.173Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:46.174Z root ERROR Board detection failed: 
-2025-11-13T00:18:50.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:50.341Z root ERROR Board detection failed: 
-2025-11-13T00:18:55.342Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:18:55.342Z root ERROR Board detection failed: 
-2025-11-13T00:19:00.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:19:00.342Z root ERROR Board detection failed: 
-2025-11-13T00:19:05.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:19:05.341Z root ERROR Board detection failed: 
-2025-11-13T00:19:10.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T00:19:10.341Z root ERROR Board detection failed: 
-2025-11-13T00:19:15.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
 

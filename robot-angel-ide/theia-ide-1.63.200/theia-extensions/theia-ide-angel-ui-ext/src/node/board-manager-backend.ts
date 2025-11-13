@@ -21,9 +21,9 @@ export class BoardManagerBackend {
     private scriptPath: string;
 
     constructor() {
-        // Find Python from conda environment
-        const condaPrefix = process.env.CONDA_PREFIX || path.join(os.homedir(), 'miniconda3', 'envs', 'robot-angel');
-        this.pythonPath = path.join(condaPrefix, 'bin', 'python');
+        // Find Python from virtual environment
+        const venvPath = process.env.VIRTUAL_ENV || path.join(os.homedir(), '.venvs', 'robot-angel');
+        this.pythonPath = path.join(venvPath, 'bin', 'python');
         
         // Path to Robot Angel Python utilities
         this.scriptPath = path.join(os.homedir(), 'Desktop', 'RobotAngel', 'robot_angel');
