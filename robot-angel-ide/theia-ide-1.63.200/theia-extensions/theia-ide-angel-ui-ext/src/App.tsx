@@ -299,6 +299,49 @@ export default function App() {
     }
   };
 
+  const handleUpload = async (port: string, fqbn: string) => {
+    if (!activeFile || !activeFile.content) {
+      console.log('No active file or empty content');
+      alert('No code to upload');
+      return;
+    }
+
+    try {
+      // @ts-ignore
+      const boardManager = window.angelBoardManager;
+      if (!boardManager) {
+        console.error('Board manager not available');
+        alert('Board manager not available');
+        return;
+      }
+
+      // @ts-ignore
+      if (terminalRef.current?.executeCommand) {
+        await terminalRef.current.executeCommand(`echo "📤 Uploading to ${port}..."`);
+      }
+
+      const result = await boardManager.uploadCode(activeFile.content, port, fqbn);
+
+      if (result.success) {
+        console.log('Upload successful!');
+        // @ts-ignore
+        if (terminalRef.current?.executeCommand) {
+          await terminalRef.current.executeCommand('echo "✅ Upload successful!"');
+        }
+      } else {
+        console.error('Upload failed:', result.message);
+        alert(`Upload failed: ${result.message}`);
+        // @ts-ignore
+        if (terminalRef.current?.executeCommand) {
+          await terminalRef.current.executeCommand(`echo "❌ Upload failed: ${result.message}"`);
+        }
+      }
+    } catch (error) {
+      console.error('Error uploading:', error);
+      alert(`Upload error: ${error}`);
+    }
+  };
+
   return (
     <div className="h-screen bg-gray-900 flex flex-col dark">
       {/* --- TOP TOOLBAR --- */}
@@ -314,6 +357,7 @@ export default function App() {
         onDebug={handleDebug}
         isRunning={isRunning}
         terminalRef={terminalRef}
+        onUpload={handleUpload}
       />
 
       {/* --- MAIN LAYOUT: Sidebar | Editor/Monitor | Terminal --- */}

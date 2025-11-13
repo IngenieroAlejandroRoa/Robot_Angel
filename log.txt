@@ -1,294 +1,121 @@
-vs/editor/standalone/browser/standaloneServices.js 72:33-89
-theia-ide-electron-app:  @ ../../node_modules/@theia/monaco/lib/browser/monaco-frontend-module.js 65:29-117
-theia-ide-electron-app:  @ ./src-gen/frontend/secondary-index.js 10:19-86
-theia-ide-electron-app: WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
-theia-ide-electron-app: This can impact web performance.
-theia-ide-electron-app: Assets: 
-theia-ide-electron-app:   c1e38fd9e0e74ba58f7a.svg?v=4.7.0 (434 KiB)
-theia-ide-electron-app:   secondary-window.css (497 KiB)
-theia-ide-electron-app:   secondary-window.js (10.9 MiB)
-theia-ide-electron-app:   55a4dd893aa466108ee8.wasm (462 KiB)
-theia-ide-electron-app: WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
-theia-ide-electron-app: Entrypoints:
-theia-ide-electron-app:   secondary-window (11.4 MiB)
-theia-ide-electron-app:       secondary-window.css
-theia-ide-electron-app:       secondary-window.js
-theia-ide-electron-app: 
-theia-ide-electron-app: WARNING in webpack performance recommendations: 
-theia-ide-electron-app: You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
-theia-ide-electron-app: For more info visit https://webpack.js.org/guides/code-splitting/
-theia-ide-electron-app: 2 warnings have detailed information that is not shown.
-theia-ide-electron-app: Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
-theia-ide-electron-app: webpack 5.102.1 compiled with 5 warnings in 68427 ms
-theia-ide-electron-app: asset preload.js 19.6 KiB [compared for emit] [minimized] (name: preload) 1 related asset
-theia-ide-electron-app: modules by path ../../node_modules/@theia/core/ 51.8 KiB
-theia-ide-electron-app:   modules by path ../../node_modules/@theia/core/lib/common/*.js 37.8 KiB
-theia-ide-electron-app:     ../../node_modules/@theia/core/lib/common/disposable.js 5.74 KiB [built] [code generated]
-theia-ide-electron-app:     ../../node_modules/@theia/core/lib/common/event.js 14.1 KiB [built] [code generated]
-theia-ide-electron-app:     ../../node_modules/@theia/core/lib/common/types.js 5.1 KiB [built] [code generated]
-theia-ide-electron-app:     + 3 modules
-theia-ide-electron-app:   ../../node_modules/@theia/core/lib/electron-browser/preload.js 9.61 KiB [built] [code generated]
-theia-ide-electron-app:   ../../node_modules/@theia/core/lib/electron-common/electron-api.js 4.28 KiB [built] [code generated]
-theia-ide-electron-app:   ../../node_modules/@theia/core/electron-shared/electron/index.js 61 bytes [built] [code generated]
-theia-ide-electron-app: modules by path ../../node_modules/@theia/filesystem/lib/ 2.64 KiB
-theia-ide-electron-app:   ../../node_modules/@theia/filesystem/lib/electron-browser/preload.js 1.56 KiB [built] [code generated]
-theia-ide-electron-app:   ../../node_modules/@theia/filesystem/lib/electron-common/electron-api.js 1.08 KiB [built] [code generated]
-theia-ide-electron-app: ./src-gen/frontend/preload.js 145 bytes [built] [code generated]
-theia-ide-electron-app: ../../node_modules/@theia/electron/shared/electron/index.js 38 bytes [built] [code generated]
-theia-ide-electron-app: external "electron" 42 bytes [built] [code generated]
-theia-ide-electron-app:   
-theia-ide-electron-app: webpack 5.102.1 compiled successfully in 1986 ms
-theia-ide-electron-app: assets by path *.js 11.1 MiB
-theia-ide-electron-app:   assets by chunk 11 MiB (id hint: vendors)
-theia-ide-electron-app:     asset 715.js 6.26 MiB [compared for emit] [minimized] (id hint: vendors) 1 related asset
-theia-ide-electron-app:     asset 69.js 1.54 MiB [compared for emit] [minimized] (id hint: vendors) 1 related asset
-theia-ide-electron-app:     asset 587.js 1.3 MiB [compared for emit] [minimized] (id hint: vendors) 1 related asset
-theia-ide-electron-app:     + 11 assets
-theia-ide-electron-app:   + 9 assets
-theia-ide-electron-app: assets by path native/*.node 927 KiB
-theia-ide-electron-app:   asset native/watcher.node 503 KiB [compared for emit] (auxiliary id hint: vendors)
-theia-ide-electron-app:   asset native/sshcrypto.node 85.5 KiB [compared for emit] (auxiliary id hint: vendors)
-theia-ide-electron-app:   asset native/drivelist.node 79 KiB [compared for emit] (auxiliary id hint: vendors)
-theia-ide-electron-app:   asset native/keytar.node 75.2 KiB [compared for emit] (auxiliary id hint: vendors)
-theia-ide-electron-app:   asset native/pty.node 74.1 KiB [compared for emit] (auxiliary id hint: vendors)
-theia-ide-electron-app:   + 2 assets
-theia-ide-electron-app: asset worker/conoutSocketWorker.js 686 bytes [compared for emit] [minimized] (name: worker/conoutSocketWorker)
-theia-ide-electron-app: orphan modules 530 KiB [orphan] 206 modules
-theia-ide-electron-app: runtime modules 26.6 KiB 72 modules
-theia-ide-electron-app: modules by path ../../node_modules/ 21.5 MiB
-theia-ide-electron-app:   javascript modules 18.8 MiB 2961 modules
-theia-ide-electron-app:   json modules 2.69 MiB 63 modules
-theia-ide-electron-app: modules by path ../../theia-extensions/ 144 KiB 73 modules
-theia-ide-electron-app: modules by path ./ 16.2 KiB
-theia-ide-electron-app:   modules by path ./src-gen/backend/*.js 15.7 KiB 3 modules
-theia-ide-electron-app:   modules by path ./lib/backend/native-webpack-plugin/*.js 491 bytes
-theia-ide-electron-app:     ./lib/backend/native-webpack-plugin/ripgrep.js 131 bytes [built] [code generated]
-theia-ide-electron-app:     + 2 modules
-theia-ide-electron-app: modules by path external "node:stream/ 84 bytes
-theia-ide-electron-app:   external "node:stream/promises" 42 bytes [built] [code generated]
-theia-ide-electron-app:   external "node:stream/web" 42 bytes [optional] [built] [code generated]
-theia-ide-electron-app: + 51 modules
-theia-ide-electron-app: webpack 5.102.1 compiled successfully in 114309 ms
-
- ——————————————————————————————————————————————————————————————————————————
-
- >  Lerna (powered by Nx)   Successfully ran target build:prod for 2 projects
-
-
-Done in 413.42s.
-yarn run v1.22.22
-$ yarn --cwd applications/electron start --no-sandbox
-$ electron scripts/theia-electron-main.js --plugins=local-dir:../../plugins --no-sandbox
-Showing splash screen
-SplashScreen options {
-  content: '/home/ingeniero/Desktop/RobotAngel/logoVectorMejorado.svg',
-  height: 400,
-  width: 400
-}
-Configuring to accept webviews on '^.+\.webview\..+$' hostname.
-2025-11-12T18:29:25.329Z root INFO Backend p.initialize: 47.1 ms [Finished 1.087 s after backend start]
-2025-11-12T18:29:25.329Z root INFO Backend Object.initialize: 44.2 ms [Finished 1.087 s after backend start]
-2025-11-12T18:29:25.329Z root INFO Backend a.initialize: 1.3 ms [Finished 1.087 s after backend start]
-2025-11-12T18:29:25.329Z root INFO Backend a.initialize: 1.2 ms [Finished 1.088 s after backend start]
-2025-11-12T18:29:25.330Z root INFO Backend a.initialize: 0.9 ms [Finished 1.088 s after backend start]
-2025-11-12T18:29:25.330Z root INFO Backend h.initialize: 0.8 ms [Finished 1.088 s after backend start]
-2025-11-12T18:29:25.330Z root INFO Backend l.initialize: 0.8 ms [Finished 1.088 s after backend start]
-2025-11-12T18:29:25.333Z root INFO Backend l.initialize: 45.0 ms [Finished 1.088 s after backend start]
-2025-11-12T18:29:25.343Z root INFO configured all backend app contributions
-2025-11-12T18:29:25.344Z root INFO Backend l.onStart: 1.9 ms [Finished 1.103 s after backend start]
-2025-11-12T18:29:25.344Z root ERROR (node:123786) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `electron --trace-deprecation ...` to show where the warning was created)
-2025-11-12T18:29:25.346Z root INFO Configuration directory URI: 'file:///home/ingeniero/.theia-ide'
-2025-11-12T18:29:25.349Z root INFO Theia app listening on http://127.0.0.1:39587.
-2025-11-12T18:29:25.350Z root INFO Error: ENOENT: no such file or directory, open '/home/ingeniero/.theia-ide/backend-settings.json'
-    at async open (node:internal/fs/promises:633:25)
-    at async Object.readFile (node:internal/fs/promises:1237:14)
-    at async /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:934519
-2025-11-12T18:29:25.352Z root WARN The local plugin referenced by local-dir:/home/ingeniero/.theia-ide/plugins does not exist.
-2025-11-12T18:29:25.352Z root WARN The local plugin referenced by local-dir:/home/ingeniero/.theia-ide/deployedPlugins does not exist.
-2025-11-12T18:29:25.352Z root WARN The local plugin referenced by local-dir:/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/plugins does not exist.
-2025-11-12T18:29:25.353Z root WARN The local plugin referenced by local-dir:../../plugins does not exist.
-2025-11-12T18:29:25.353Z root INFO Resolve plugins list: 2.3 ms [Finished 1.112 s after backend start]
-2025-11-12T18:29:25.353Z root INFO Deploy plugins list: 2.9 ms [Finished 1.113 s after backend start]
-2025-11-12T18:29:25.357Z root INFO Backend g.onStart: 12.5 ms [Finished 1.115 s after backend start]
-2025-11-12T18:29:25.357Z root INFO Backend a.onStart: 0.4 ms [Finished 1.116 s after backend start]
-2025-11-12T18:29:25.414Z root INFO Backend p.onStart: 0.5 ms [Finished 1.116 s after backend start]
-2025-11-12T18:29:25.414Z root WARN Backend n.onStart took longer than the expected maximum 50 milliseconds: 57.1 ms [Finished 1.174 s after backend start]
-2025-11-12T18:29:25.414Z root INFO Finished starting backend application: 0.0 ms [Finished 1.174 s after backend start]
-13:29:25.425 › APPIMAGE env is not defined, current application is not an AppImage
-2025-11-12T18:29:26.432Z root INFO creating connection for 1
-Opening channel for service path '/services/electron-window'.
-Opening channel for service path '/services/theia-updater'.
-2025-11-12T18:29:28.236Z NavigationLocationService WARN no activative navigation Error: No active navigation
-    at n.register (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:5614097)
-    at n.restoreNavigationLocations (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:13374289)
-    at async n.restoreState (file:///home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/frontend/bundle.js:2:13373879)
-2025-11-12T18:29:28.249Z root INFO AngelWidgetContribution onStart() called
-2025-11-12T18:29:28.259Z root ERROR Uncaught Exception:  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-2025-11-12T18:29:28.259Z root ERROR Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-    at ServerResponse.setHeader (node:_http_outgoing:699:11)
-    at E.set.E.header (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:976667)
-    at E.send (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:972309)
-    at E.json (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:973417)
-    at i.isInitialized (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:18258)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-2025-11-12T18:29:28.261Z root ERROR Uncaught Exception:  Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-2025-11-12T18:29:28.261Z root ERROR Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-    at ServerResponse.setHeader (node:_http_outgoing:699:11)
-    at E.set.E.header (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:976667)
-    at E.send (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:972309)
-    at E.json (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/587.js:2:973417)
-    at i.isInitialized (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:5568)
-    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-2025-11-12T18:29:28.275Z root INFO Start frontend contributions: 465.2 ms [Finished 2.817 s after frontend start]
-2025-11-12T18:29:28.276Z root INFO Changed application state from 'init' to 'started_contributions'.
-13:29:28.528 › APPIMAGE env is not defined, current application is not an AppImage
-2025-11-12T18:29:28.538Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1
-2025-11-12T18:29:28.538Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1-nano
-2025-11-12T18:29:28.538Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4.1-mini
-2025-11-12T18:29:28.538Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4-turbo
-2025-11-12T18:29:28.539Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4o
-2025-11-12T18:29:28.539Z vercel-ai INFO Vercel AI: Creating or updating model vercel/openai/gpt-4o-mini
-2025-11-12T18:29:28.539Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-7-sonnet-20250219
-2025-11-12T18:29:28.539Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-5-haiku-20241022
-2025-11-12T18:29:28.539Z vercel-ai INFO Vercel AI: Creating or updating model vercel/anthropic/claude-3-opus-20240229
-2025-11-12T18:29:28.543Z root WARN Linked preference "workbench.colorCustomizations" not found.
-[123809:1112/132928.625703:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 1 times!
-[123809:1112/132928.627993:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 2 times!
-2025-11-12T18:29:28.738Z root INFO [347651ab-ea5a-4a55-bfea-3981ab16f865] Waiting for backend deployment: 492.2 ms [Finished 3.308 s after frontend start]
-2025-11-12T18:29:28.822Z root INFO Application launcher was already initialized.
-2025-11-12T18:29:28.834Z root INFO Desktop file was not updated or created.
-2025-11-12T18:29:29.026Z root INFO Changed application state from 'started_contributions' to 'attached_shell'.
-2025-11-12T18:29:29.027Z root INFO >>> Restoring the layout state...
-2025-11-12T18:29:29.069Z root INFO AngelTerminalService initialized
-2025-11-12T18:29:29.069Z root INFO AngelWidget init() called
-2025-11-12T18:29:29.070Z root INFO Terminal backend exposed globally: {
-  target: undefined,
-  rpcProtocolFactory: undefined,
-  onDidOpenConnectionEmitter: undefined,
-  onDidCloseConnectionEmitter: undefined,
-  rpcDeferred: undefined
-}
-2025-11-12T18:29:29.072Z root INFO AngelWidget calling update()
-2025-11-12T18:29:29.072Z root INFO Widget isVisible: false
-2025-11-12T18:29:29.073Z root INFO Widget isAttached: false
-2025-11-12T18:29:29.073Z root INFO AngelWidget render() called - rendering full App
-2025-11-12T18:29:29.084Z terminal WARN Couldn't attach - can't find terminal with id: 1412806515 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 1324716979 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 1214690980 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 2031992574 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 1075003106 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 369119069 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 8274604 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 90330662 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 678131034 
-2025-11-12T18:29:29.085Z terminal WARN Couldn't attach - can't find terminal with id: 286954616 
-2025-11-12T18:29:29.088Z root WARN Couldn't restore widget for robot-angel-ui:widget. Error: Error: You are attempting to construct [function/class n] in a synchronous way but it has asynchronous dependencies. 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 358738519 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 398119207 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 499908413 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 693105990 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1560213968 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 567453864 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1109578877 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1097088324 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1637590724 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1114585284 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 631533324 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1285714774 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 974750629 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1664782122 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1471381276 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1499113434 
-2025-11-12T18:29:29.089Z terminal WARN Couldn't attach - can't find terminal with id: 1950912756 
-2025-11-12T18:29:29.090Z terminal WARN Couldn't attach - can't find terminal with id: 1427816431 
-2025-11-12T18:29:29.090Z terminal WARN Couldn't attach - can't find terminal with id: 776566557 
-2025-11-12T18:29:29.090Z terminal WARN Couldn't attach - can't find terminal with id: 1402486352 
-2025-11-12T18:29:29.090Z terminal WARN Couldn't attach - can't find terminal with id: 1675501371 
-2025-11-12T18:29:29.284Z root INFO Forcing update after timeout
-2025-11-12T18:29:29.284Z root INFO AngelWidget render() called - rendering full App
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 1412806515, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 1324716979, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 1214690980, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 2031992574, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 1075003106, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 369119069, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 8274604, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 90330662, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 678131034, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 286954616, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 358738519, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 398119207, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.438Z terminal WARN Failed attaching to terminal id 499908413, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.439Z terminal WARN Failed attaching to terminal id 693105990, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.935Z terminal WARN Failed attaching to terminal id 1560213968, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.935Z terminal WARN Failed attaching to terminal id 567453864, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1109578877, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1097088324, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1637590724, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1114585284, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 631533324, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1285714774, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 974750629, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1664782122, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1471381276, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1499113434, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1950912756, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1427816431, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 776566557, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1402486352, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.936Z terminal WARN Failed attaching to terminal id 1675501371, the terminal is most likely gone. Starting up a new terminal instead.
-2025-11-12T18:29:29.999Z root INFO <<< The layout has been successfully restored.
-2025-11-12T18:29:29.999Z root INFO Initialize the workbench layout: 641.2 ms [Finished 4.144 s after frontend start]
-2025-11-12T18:29:29.999Z root INFO Changed application state from 'attached_shell' to 'initialized_layout'.
-2025-11-12T18:29:29.999Z root INFO [347651ab-ea5a-4a55-bfea-3981ab16f865] Loading plugin contributions
-2025-11-12T18:29:30.364Z root INFO Opening Angel widget after timeout...
-2025-11-12T18:29:30.364Z root INFO Main widgets found: 0
-2025-11-12T18:29:30.364Z root INFO Creating widget via widgetManager (ASYNC)...
-2025-11-12T18:29:30.933Z root INFO Widget ID: robot-angel-ui:widget
-2025-11-12T18:29:30.934Z root INFO Adding widget to main area...
-2025-11-12T18:29:30.934Z root INFO AngelWidget onAfterAttach called
-2025-11-12T18:29:30.934Z root INFO Widget isVisible: true
-2025-11-12T18:29:30.934Z root INFO Widget isAttached: true
-2025-11-12T18:29:30.935Z root INFO Activating widget...
-2025-11-12T18:29:30.935Z root INFO AngelWidget onActivateRequest called
-2025-11-12T18:29:30.935Z root INFO AngelWidget render() called - rendering full App
-2025-11-12T18:29:31.130Z root INFO Forcing update after attach
-2025-11-12T18:29:31.130Z root INFO AngelWidget render() called - rendering full App
-2025-11-12T18:29:31.147Z root INFO Replace loading indicator with ready workbench UI (animation): 1539.7 ms [Finished 5.694 s after frontend start]
-2025-11-12T18:29:31.148Z root INFO Changed application state from 'initialized_layout' to 'ready'.
-2025-11-12T18:29:31.148Z root INFO Frontend application start: 3216.1 ms [Finished 6.907 s after backend start]
-(node:123499) UnhandledPromiseRejectionWarning: Error: Cancelled
-    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:108056)
-    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:162430
-    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:127974
-    at s.invoke (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:128063)
-    at a.fire (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:129862)
-    at c.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107260)
-    at t.CancellationTokenSource.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107815)
-    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22275)
-    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22413
-(Use `electron --trace-warnings ...` to show where the warning was created)
-(node:123499) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
-2025-11-12T18:29:32.847Z root INFO Widget isVisible: true
-2025-11-12T18:29:32.847Z root INFO Widget isAttached: true
-2025-11-12T18:29:32.848Z root INFO ✅ Robot Angel UI opened successfully!
-2025-11-12T18:29:32.934Z root WARN Widget was activated, but did not accept focus after 2000ms: robot-angel-ui:widget
-[123809:1112/133054.716370:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 3 times!
-2025-11-12T18:31:02.129Z root INFO Preparing to run python script...
-2025-11-12T18:31:02.144Z root INFO Executing command: python3 "/tmp/robot_angel_1.py"
-2025-11-12T18:31:02.166Z root INFO Script execution completed
-2025-11-12T18:31:15.959Z root INFO Preparing to run python script...
-2025-11-12T18:31:16.013Z root INFO Executing command: python3 "/tmp/robot_angel_2.py"
-2025-11-12T18:31:16.025Z root INFO Script execution completed
-2025-11-12T18:31:45.078Z root INFO Preparing to run python script...
-2025-11-12T18:31:45.091Z root INFO Executing command: python3 "/tmp/robot_angel_3.py"
-2025-11-12T18:31:45.113Z root INFO Script execution completed
-2025-11-12T18:32:50.380Z root INFO Preparing to run bash script...
-2025-11-12T18:32:50.393Z root INFO Executing command: bash "/tmp/robot_angel_4.sh"
-2025-11-12T18:32:50.397Z root INFO Script execution completed
-2025-11-12T18:32:55.329Z root INFO Preparing to run bash script...
-2025-11-12T18:32:55.343Z root INFO Executing command: bash "/tmp/robot_angel_5.sh"
-2025-11-12T18:32:55.349Z root INFO Script execution completed
-
+90:21)
+2025-11-13T00:17:35.341Z root ERROR Board detection failed: 
+2025-11-13T00:17:40.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:17:40.341Z root ERROR Board detection failed: 
+2025-11-13T00:17:45.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:17:45.341Z root ERROR Board detection failed: 
+2025-11-13T00:17:50.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:17:50.341Z root ERROR Board detection failed: 
+2025-11-13T00:17:55.334Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:17:55.334Z root ERROR Board detection failed: 
+2025-11-13T00:17:55.350Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:17:55.350Z root ERROR Board detection failed: 
+2025-11-13T00:18:00.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:00.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:05.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:05.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:10.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:10.342Z root ERROR Board detection failed: 
+2025-11-13T00:18:15.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:15.342Z root ERROR Board detection failed: 
+2025-11-13T00:18:16.364Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:16.365Z root ERROR Board detection failed: 
+2025-11-13T00:18:20.245Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:20.246Z root ERROR Board detection failed: 
+2025-11-13T00:18:20.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:20.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:25.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:25.342Z root ERROR Board detection failed: 
+2025-11-13T00:18:30.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:30.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:35.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:35.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:40.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:40.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:45.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:45.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:46.173Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:46.174Z root ERROR Board detection failed: 
+2025-11-13T00:18:50.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:50.341Z root ERROR Board detection failed: 
+2025-11-13T00:18:55.342Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:18:55.342Z root ERROR Board detection failed: 
+2025-11-13T00:19:00.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:19:00.342Z root ERROR Board detection failed: 
+2025-11-13T00:19:05.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:19:05.341Z root ERROR Board detection failed: 
+2025-11-13T00:19:10.340Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-11-13T00:19:10.341Z root ERROR Board detection failed: 
+2025-11-13T00:19:15.341Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
+    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
+    at onErrorNT (node:internal/child_process:483:16)
 

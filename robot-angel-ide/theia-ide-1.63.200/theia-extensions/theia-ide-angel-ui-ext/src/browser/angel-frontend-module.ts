@@ -15,7 +15,9 @@ import { AngelWidget } from './angel-widget';
 import { AngelWidgetContribution } from './angel-contribution';
 import { AngelTerminalService } from './terminal-service';
 import { AngelFileService } from './angel-file-service';
+import { BoardManagerService } from './board-manager-service';
 import { TerminalBackend, TerminalBackendPath } from '../common/terminal-protocol';
+import { BoardManagerBackendPath } from './board-manager-service';
 
 export default new ContainerModule(bind => {
     // Register our contribution so it becomes available in the
@@ -31,6 +33,9 @@ export default new ContainerModule(bind => {
 
     // Bind the file service
     bind(AngelFileService).toSelf().inSingletonScope();
+
+    // Bind the board manager service
+    bind(BoardManagerService).toSelf().inSingletonScope();
 
     // Bind the terminal backend RPC
     bind(TerminalBackend).toDynamicValue(ctx => {

@@ -28,6 +28,7 @@ import '../theia-integration.css';
 import { AngelTerminalService } from './terminal-service';
 import { setTerminalServiceInstance } from '../hooks/useTerminalService';
 import { AngelFileService } from './angel-file-service';
+import { BoardManagerService } from './board-manager-service';
 import { TerminalBackend } from '../common/terminal-protocol';
 
 /**
@@ -43,6 +44,9 @@ export class AngelWidget extends ReactWidget {
 
     @inject(AngelFileService)
     protected readonly fileService: AngelFileService;
+
+    @inject(BoardManagerService)
+    protected readonly boardManagerService: BoardManagerService;
 
     @inject(TerminalBackend)
     protected readonly terminalBackend: TerminalBackend;
@@ -85,6 +89,10 @@ export class AngelWidget extends ReactWidget {
         // Expose file service globally
         (window as any).angelFileService = this.fileService;
         console.log('File service exposed globally:', this.fileService);
+        
+        // Expose board manager globally
+        (window as any).angelBoardManager = this.boardManagerService;
+        console.log('Board manager exposed globally:', this.boardManagerService);
         
         // Also initialize for React hooks
         setTerminalServiceInstance(this.terminalService);

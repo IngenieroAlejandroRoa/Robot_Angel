@@ -1,9 +1,15 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { Play, Square, Bug, Settings, FileText, FolderOpen, Save, Zap, Cpu } from "lucide-react";
+import { Play, Square, Bug, Settings, FileText, FolderOpen, Save, Zap, Cpu, Upload, ChevronDown } from "lucide-react";
 import logoImage from './assets/0619f22ea1d44864927116629fbe5ab4c93093fe.png';
+
+interface BoardInfo {
+  port: string;
+  boardType: string;
+  fqbn: string;
+}
 
 interface TopToolbarProps {
   onSerialMonitorToggle: () => void;
@@ -17,6 +23,7 @@ interface TopToolbarProps {
   onDebug: () => void;
   isRunning: boolean;
   terminalRef?: React.RefObject<any>;
+  onUpload?: (port: string, fqbn: string) => void;
 }
 
 export function TopToolbar({ 
@@ -30,9 +37,58 @@ export function TopToolbar({
   onStop,
   onDebug,
   isRunning,
-  terminalRef
+  terminalRef,
+  onUpload
 }: TopToolbarProps) {
   const [isMicroRosRunning, setIsMicroRosRunning] = useState(false);
+  const [boards, setBoards] = useState<BoardInfo[]>([]);
+  const [selectedBoard, setSelectedBoard] = useState<BoardInfo | null>(null);
+  const [showBoardDropdown, setShowBoardDropdown] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+
+  useEffect(() => {
+    detectBoards();
+    // Refresh boards every 5 seconds
+    const interval = setInterval(detectBoards, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const detectBoards = async () => {
+    try {
+      // @ts-ignore
+      const boardManager = window.angelBoardManager;
+      if (!boardManager) {
+        console.error('Board manager not available');
+        return;
+      }
+
+      const detectedBoards = await boardManager.detectBoards();
+      setBoards(detectedBoards);
+      
+      // Auto-select first board if none selected
+      if (detectedBoards.length > 0 && !selectedBoard) {
+        setSelectedBoard(detectedBoards[0]);
+      }
+    } catch (error) {
+      console.error('Error detecting boards:', error);
+    }
+  };
+
+  const handleUpload = async () => {
+    if (!selectedBoard) {
+      alert('Please select a board first');
+      return;
+    }
+
+    if (onUpload) {
+      setIsUploading(true);
+      try {
+        await onUpload(selectedBoard.port, selectedBoard.fqbn);
+      } finally {
+        setIsUploading(false);
+      }
+    }
+  };
 
   const handleMicroRosToggle = async () => {
     try {
@@ -198,9 +254,70 @@ export function TopToolbar({
       
       <div className="flex items-center gap-2">
         <img src={logoImage} alt="Logo" className="h-8 w-8" />
-        <div className="bg-purple-600 px-3 py-1 rounded text-white font-medium">
-          Upload
+        
+        {/* Board Selector Dropdown */}
+        <div className="relative">
+          <Button
+            size="sm"
+            variant="outline"
+            className="border-purple-600 bg-gray-800 hover:bg-gray-700 text-gray-200"
+            onClick={() => setShowBoardDropdown(!showBoardDropdown)}
+          >
+            <Cpu className="h-4 w-4 mr-1" />
+            {selectedBoard ? selectedBoard.boardType : 'No Board'}
+            <ChevronDown className="h-3 w-3 ml-1" />
+          </Button>
+          
+          {showBoardDropdown && (
+            <div className="absolute right-0 mt-1 w-64 bg-gray-800 border border-gray-600 rounded shadow-lg z-50">
+              <div className="p-2">
+                <div className="text-xs text-gray-400 mb-2">Available Boards:</div>
+                {boards.length === 0 ? (
+                  <div className="text-sm text-gray-500 p-2">No boards detected</div>
+                ) : (
+                  boards.map((board, idx) => (
+                    <div
+                      key={idx}
+                      className={`p-2 rounded cursor-pointer hover:bg-gray-700 ${
+                        selectedBoard?.port === board.port ? 'bg-purple-600' : ''
+                      }`}
+                      onClick={() => {
+                        setSelectedBoard(board);
+                        setShowBoardDropdown(false);
+                      }}
+                    >
+                      <div className="text-sm font-medium text-white">{board.boardType}</div>
+                      <div className="text-xs text-gray-400">{board.port}</div>
+                    </div>
+                  ))
+                )}
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="w-full mt-2 text-xs text-purple-400 hover:bg-gray-700"
+                  onClick={() => {
+                    detectBoards();
+                    setShowBoardDropdown(false);
+                  }}
+                >
+                  Refresh Boards
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
+        
+        {/* Upload Button */}
+        <Button
+          size="sm"
+          className={`${isUploading ? 'bg-yellow-600 hover:bg-yellow-700' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium`}
+          onClick={handleUpload}
+          disabled={!selectedBoard || isUploading}
+        >
+          <Upload className="h-4 w-4 mr-1" />
+          {isUploading ? 'Uploading...' : 'Upload'}
+        </Button>
+        
         <img src={logoImage} alt="Logo" className="h-8 w-8" />
       </div>
     </div>
