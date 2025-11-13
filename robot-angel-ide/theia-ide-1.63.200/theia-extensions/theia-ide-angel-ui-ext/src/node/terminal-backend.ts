@@ -17,6 +17,7 @@ export class TerminalBackendImpl {
     private processCounter: number = 1;
     private currentExecutionProcess: any = null;
     private microRosAgentProcess: any = null;
+    private shellPath: string = process.env.SHELL || '/bin/bash';
 
     async executeCommand(command: string, cwd?: string): Promise<TerminalCommandResult> {
         const workDir = cwd || this.currentWorkingDirectory;
@@ -27,7 +28,7 @@ export class TerminalBackendImpl {
                 cwd: workDir,
                 timeout: 30000,
                 maxBuffer: 1024 * 1024,
-                shell: '/bin/bash'
+                shell: this.shellPath
             });
 
             // Store current process so we can kill it with Stop
@@ -64,7 +65,7 @@ export class TerminalBackendImpl {
             if (command.trim().startsWith('cd ')) {
                 const targetDir = command.trim().substring(3).trim();
                 if (targetDir && !result.error) {
-                    const { stdout: newCwd } = await execAsync('pwd', { cwd: targetDir, shell: '/bin/bash' });
+                    const { stdout: newCwd } = await execAsync('pwd', { cwd: targetDir, shell: this.shellPath });
                     this.currentWorkingDirectory = newCwd.trim();
                 }
             }
@@ -446,7 +447,7 @@ export class TerminalBackendImpl {
 
         try {
             this.microRosAgentProcess = exec(fullCmd, {
-                shell: '/bin/bash',
+                shell: this.shellPath,
                 maxBuffer: 1024 * 1024
             });
 
