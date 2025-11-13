@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robot Angel - IDE Open Source especializado en robótica educativa y profesional. Democratizando la robótica para la siguiente generación.">
+    <meta name="keywords" content="Robot Angel, IDE, robótica, open source, micro-ROS, MicroPython, ESP32, Arduino, Theia">
+    <meta name="author" content="Alejandro Roa Aparicio">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Robot Angel - IDE Open Source para Robótica">
+    <meta property="og:description" content="Entorno de desarrollo integrado especializado en robótica educativa y profesional">
+    <meta property="og:image" content="./assets/logo.png">
+    <meta property="og:url" content="https://tu-usuario.github.io/RobotAngel/">
+    
+    <title>Robot Angel - IDE Open Source para Robótica</title>
+    
+    <link rel="icon" type="image/png" href="../../logo.png">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <img src="../../logoVectorMejorado.svg" alt="Robot Angel Logo" class="logo">
+                <span class="brand-name">Robot Angel</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#features" class="nav-link">Características</a></li>
+                <li><a href="#architecture" class="nav-link">Arquitectura</a></li>
+                <li><a href="#quickstart" class="nav-link">Inicio Rápido</a></li>
+                <li><a href="#docs" class="nav-link">Documentación</a></li>
+                <li><a href="#contribute" class="nav-link">Contribuir</a></li>
+                <li><a href="https://github.com/tu-usuario/RobotAngel" class="nav-link github-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    GitHub
+                </a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span>Open Source • GPLv3</span>
+                </div>
+                <h1 class="hero-title">
+                    Robot Angel
+                    <span class="gradient-text">IDE</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Entorno de desarrollo integrado especializado en <strong>robótica educativa y profesional</strong>
+                </p>
+                <p class="hero-description">
+                    Automatiza la instalación de middlewares como micro-ROS y MicroPython en placas ESP32 y Arduino. 
+                    Desarrolla, compila y sube código en un solo clic.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://github.com/tu-usuario/RobotAngel" class="btn btn-primary" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Descargar IDE
+                    </a>
+                    <a href="#quickstart" class="btn btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        Inicio Rápido
+                    </a>
+                </div>
+                <div class="hero-badges">
+                    <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License">
+                    <img src="https://img.shields.io/badge/Node.js-18+-green.svg" alt="Node.js">
+                    <img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python">
+                    <img src="https://img.shields.io/badge/Theia-1.63-purple.svg" alt="Theia">
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="ide-mockup">
+                    <div class="ide-header">
+                        <div class="ide-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="ide-title">Robot Angel IDE</div>
+                    </div>
+                    <div class="ide-content">
+                        <div class="code-lines">
+                            <pre><code><span class="comment">// Control de LED con ESP32</span>
+<span class="keyword">void</span> <span class="function">setup</span>() {
+  <span class="function">pinMode</span>(<span class="constant">LED_BUILTIN</span>, <span class="constant">OUTPUT</span>);
+}
+
+<span class="keyword">void</span> <span class="function">loop</span>() {
+  <span class="function">digitalWrite</span>(<span class="constant">LED_BUILTIN</span>, <span class="constant">HIGH</span>);
+  <span class="function">delay</span>(<span class="number">1000</span>);
+  <span class="function">digitalWrite</span>(<span class="constant">LED_BUILTIN</span>, <span class="constant">LOW</span>);
+  <span class="function">delay</span>(<span class="number">1000</span>);
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number">1-Click</div>
+                    <div class="stat-label">Upload a Placas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Placas Soportadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Lenguajes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Características Principales</h2>
+                <p class="section-subtitle">Todo lo que necesitas para desarrollar robótica en un solo lugar</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>Editor Avanzado</h3>
+                    <p>Basado en Monaco Editor (mismo de VS Code) con syntax highlighting para C/C++, Python, JavaScript y Java.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <h3>Terminal Integrado</h3>
+                    <p>Ejecuta comandos, compila código y administra tu proyecto sin salir del IDE.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Upload en 1 Clic</h3>
+                    <p>Detección automática de placas ESP32 y Arduino. Compila y sube código instantáneamente.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Monitor Serial</h3>
+                    <p>Comunicación bidireccional en tiempo real con tus placas. Configuración flexible de baudrate.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <h3>micro-ROS Ready</h3>
+                    <p>Instalación automática de micro-ROS para desarrollo con ROS 2 en microcontroladores.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                            <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        </svg>
+                    </div>
+                    <h3>MicroPython</h3>
+                    <p>Soporte completo para MicroPython. Desarrolla en Python para placas embebidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Arquitectura Modular</h2>
+                <p class="section-subtitle">Diseño en capas inspirado en las mejores prácticas de ingeniería</p>
+            </div>
+            
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <div class="layer-title">Capa de Presentación</div>
+                    <div class="layer-content">
+                        <span class="tech-tag">Theia Frontend</span>
+                        <span class="tech-tag">React 18</span>
+                        <span class="tech-tag">Monaco Editor</span>
+                        <span class="tech-tag">Radix UI</span>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">↕</div>
+                
+                <div class="arch-layer">
+                    <div class="layer-title">Capa de Lógica</div>
+                    <div class="layer-content">
+                        <span class="tech-tag">Node.js 18+</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">JSON-RPC</span>
+                        <span class="tech-tag">WebSocket</span>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">↕</div>
+                
+                <div class="arch-layer">
+                    <div class="layer-title">Capa de Hardware</div>
+                    <div class="layer-content">
+                        <span class="tech-tag">Python 3.10+</span>
+                        <span class="tech-tag">pyserial</span>
+                        <span class="tech-tag">arduino-cli</span>
+                        <span class="tech-tag">esptool</span>
+                    </div>
+                </div>
+                
+                <div class="arch-arrow">↕</div>
+                
+                <div class="arch-layer hardware-layer">
+                    <div class="layer-title">Hardware Físico</div>
+                    <div class="layer-content">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">Arduino</span>
+                        <span class="tech-tag">RP2040</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section id="quickstart" class="quickstart">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Inicio Rápido</h2>
+                <p class="section-subtitle">Empieza a desarrollar en minutos</p>
+            </div>
+            
+            <div class="quickstart-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Clonar Repositorio</h3>
+                        <div class="code-block">
+                            <pre><code>git clone https://github.com/tu-usuario/RobotAngel.git
+cd RobotAngel</code></pre>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Instalar Dependencias</h3>
+                        <div class="code-block">
+                            <pre><code># Crear entorno virtual Python
+python3 -m venv ~/.venvs/robot-angel
+source ~/.venvs/robot-angel/bin/activate
+
+# Instalar dependencias
+pip install -r requirements.txt</code></pre>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Construir y Ejecutar</h3>
+                        <div class="code-block">
+                            <pre><code>cd robot-angel-ide/theia-ide-1.63.200/applications/electron
+npm install
+npm run build
+npm start</code></pre>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quickstart-note">
+                <div class="note-icon">💡</div>
+                <div class="note-content">
+                    <strong>Nota:</strong> Para más detalles sobre la instalación en diferentes sistemas operativos, 
+                    consulta la <a href="../../README.md">documentación completa</a>.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Hardware Section -->
+    <section class="hardware">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hardware Soportado</h2>
+                <p class="section-subtitle">Compatible con las placas más populares del mercado</p>
+            </div>
+            
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-icon">🔷</div>
+                    <h3>ESP32 Family</h3>
+                    <ul>
+                        <li>ESP32</li>
+                        <li>ESP32-S2</li>
+                        <li>ESP32-S3</li>
+                        <li>ESP32-C3</li>
+                    </ul>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">🤖</div>
+                    <h3>Arduino</h3>
+                    <ul>
+                        <li>Arduino Uno</li>
+                        <li>Arduino Mega</li>
+                        <li>Arduino Nano</li>
+                        <li>Compatibles</li>
+                    </ul>
+                </div>
+
+                <div class="hardware-card">
+                    <div class="hardware-icon">🍓</div>
+                    <h3>Raspberry Pi</h3>
+                    <ul>
+                        <li>Pico (RP2040)</li>
+                        <li>Pico W</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="documentation">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Documentación</h2>
+                <p class="section-subtitle">Guías completas para empezar y dominar Robot Angel</p>
+            </div>
+            
+            <div class="docs-grid">
+                <a href="../../README.md" class="doc-card">
+                    <div class="doc-icon">📘</div>
+                    <h3>README Principal</h3>
+                    <p>Introducción completa al proyecto, instalación y características</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="../../docs/ARCHITECTURE.md" class="doc-card">
+                    <div class="doc-icon">🏗️</div>
+                    <h3>Arquitectura</h3>
+                    <p>Detalles técnicos de la arquitectura y diseño del sistema</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="../../docs/ESP32_UPLOAD_SYSTEM.md" class="doc-card">
+                    <div class="doc-icon">⚡</div>
+                    <h3>Sistema de Upload</h3>
+                    <p>Funcionamiento del sistema de compilación y upload</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="../../docs/DEVELOPMENT.md" class="doc-card">
+                    <div class="doc-icon">👨‍💻</div>
+                    <h3>Guía de Desarrollo</h3>
+                    <p>Cómo contribuir y desarrollar nuevas características</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="../../docs/USER_GUIDE.md" class="doc-card">
+                    <div class="doc-icon">📖</div>
+                    <h3>Guía de Usuario</h3>
+                    <p>Manual de uso del IDE paso a paso</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+
+                <a href="../../UPLOAD_FEATURE_SUMMARY.md" class="doc-card">
+                    <div class="doc-icon">📋</div>
+                    <h3>Upload Feature</h3>
+                    <p>Resumen de la funcionalidad de upload automático</p>
+                    <span class="doc-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribute Section -->
+    <section id="contribute" class="contribute">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Únete a la Comunidad</h2>
+                <p class="section-subtitle">Robot Angel es posible gracias a la colaboración de la comunidad</p>
+            </div>
+            
+            <div class="contribute-content">
+                <div class="contribute-info">
+                    <h3>¿Cómo Contribuir?</h3>
+                    <ol class="contribute-steps">
+                        <li>
+                            <strong>Fork</strong> el repositorio en GitHub
+                        </li>
+                        <li>
+                            <strong>Crea una rama</strong> para tu feature: <code>git checkout -b feat/nueva-funcionalidad</code>
+                        </li>
+                        <li>
+                            <strong>Haz commit</strong> de tus cambios: <code>git commit -m 'Agrega nueva funcionalidad'</code>
+                        </li>
+                        <li>
+                            <strong>Push</strong> a la rama: <code>git push origin feat/nueva-funcionalidad</code>
+                        </li>
+                        <li>
+                            <strong>Abre un Pull Request</strong> en GitHub
+                        </li>
+                    </ol>
+
+                    <h3>Áreas de Contribución</h3>
+                    <div class="contribution-areas">
+                        <span class="area-tag">🐛 Bug Fixes</span>
+                        <span class="area-tag">✨ Nuevas Features</span>
+                        <span class="area-tag">📝 Documentación</span>
+                        <span class="area-tag">🎨 UI/UX</span>
+                        <span class="area-tag">🧪 Tests</span>
+                        <span class="area-tag">🌍 Traducciones</span>
+                        <span class="area-tag">📚 Contenido Educativo</span>
+                    </div>
+                </div>
+
+                <div class="contribute-links">
+                    <a href="https://github.com/tu-usuario/RobotAngel" class="contribute-link" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                        <div>
+                            <strong>GitHub Repository</strong>
+                            <p>Explora el código fuente</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/tu-usuario/RobotAngel/issues" class="contribute-link" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <div>
+                            <strong>Issues & Bugs</strong>
+                            <p>Reporta problemas o solicita features</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/tu-usuario/RobotAngel/discussions" class="contribute-link" target="_blank">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        <div>
+                            <strong>Discussions</strong>
+                            <p>Únete a las conversaciones</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre el Proyecto</h2>
+                    <p>
+                        Robot Angel nace como respuesta a la necesidad de democratizar la robótica en educación y desarrollo profesional. 
+                        Inspirado en el movimiento de software libre y en iniciativas como Arduino y ROS, este proyecto busca eliminar 
+                        las barreras económicas y técnicas que limitan el acceso a herramientas de desarrollo robótico.
+                    </p>
+                    <p>
+                        Desarrollado como proyecto de grado en la <strong>Universidad EAN</strong> por <strong>Alejandro Roa Aparicio</strong>, 
+                        bajo la dirección de <strong>PhD. Luisa Fernanda Carvajal Diaz</strong>.
+                    </p>
+                    
+                    <div class="about-quote">
+                        <div class="quote-mark">"</div>
+                        <p>La robótica es un pilar fundamental para el desarrollo del pensamiento lógico y las habilidades del siglo XXI en la educación STEM</p>
+                    </div>
+
+                    <div class="license-info">
+                        <h3>Licencia</h3>
+                        <p>
+                            Robot Angel está distribuido bajo <strong>GNU General Public License v3.0 (GPLv3)</strong>. 
+                            Esto garantiza que el proyecto y sus derivados permanezcan libres y abiertos para siempre.
+                        </p>
+                        <a href="../../LICENSE" class="license-link">Ver Licencia Completa →</a>
+                    </div>
+                </div>
+
+                <div class="about-stats-large">
+                    <div class="stat-large">
+                        <div class="stat-large-icon">🎓</div>
+                        <div class="stat-large-info">
+                            <div class="stat-large-title">Proyecto Académico</div>
+                            <div class="stat-large-desc">Universidad EAN • 2025</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-large">
+                        <div class="stat-large-icon">📖</div>
+                        <div class="stat-large-info">
+                            <div class="stat-large-title">Documentación Completa</div>
+                            <div class="stat-large-desc">Guías técnicas y pedagógicas</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-large">
+                        <div class="stat-large-icon">🌍</div>
+                        <div class="stat-large-info">
+                            <div class="stat-large-title">Comunidad Global</div>
+                            <div class="stat-large-desc">Código abierto para todos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="../../logoVectorMejorado.svg" alt="Robot Angel Logo" class="footer-logo">
+                        <span>Robot Angel IDE</span>
+                    </div>
+                    <p class="footer-description">
+                        IDE Open Source especializado en robótica educativa y profesional.
+                        Democratizando la robótica para la siguiente generación.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://github.com/tu-usuario/RobotAngel" target="_blank" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../README.md">Documentación</a></li>
+                        <li><a href="#quickstart">Inicio Rápido</a></li>
+                        <li><a href="https://github.com/tu-usuario/RobotAngel/releases">Releases</a></li>
+                        <li><a href="https://github.com/tu-usuario/RobotAngel/wiki">Wiki</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Comunidad</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/tu-usuario/RobotAngel/issues">Issues</a></li>
+                        <li><a href="https://github.com/tu-usuario/RobotAngel/discussions">Discussions</a></li>
+                        <li><a href="#contribute">Contribuir</a></li>
+                        <li><a href="https://github.com/tu-usuario/RobotAngel/blob/main/CODE_OF_CONDUCT.md">Código de Conducta</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../LICENSE">Licencia GPLv3</a></li>
+                        <li><a href="#about">Sobre el Proyecto</a></li>
+                        <li><a href="mailto:aroaapa33136@universidadean.edu.co">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    © 2025 Robot Angel IDE. Desarrollado por <a href="https://github.com/tu-usuario">Alejandro Roa Aparicio</a> 
+                    en la Universidad EAN.
+                </p>
+                <p>
+                    Licenciado bajo <a href="../../LICENSE">GPLv3</a>. 
+                    Hecho con ❤️ para la comunidad STEM.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Robot Angel Landing Page
+# 
+# Si deseas usar un dominio personalizado, descomenta y edita la siguiente línea:
+# robotangel.tudominio.com
+#
+# Luego:
+# 1. Configura los registros DNS en tu proveedor:
+#    - Tipo: CNAME
+#    - Name: robotangel (o @)
+#    - Value: tu-usuario.github.io
+#
+# 2. Renombra este archivo a CNAME (sin extensión)
+# 3. Colócalo en la raíz del directorio que uses para GitHub Pages
+# 4. Haz commit y push
+#
+# Más información: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site

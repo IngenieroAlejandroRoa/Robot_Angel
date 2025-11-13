@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Theia](https://img.shields.io/badge/Theia-1.63-purple.svg)](https://theia-ide.org/)
 
-[Características](#-características) • [Instalación](#-instalación) • [Documentación](./docs/) • [Contribuir](#-contribuir)
+[Características](#-características) • [Instalación](#-instalación) • [Documentación](./docs/) • [Contribuir](#-contribuir) • [🌐 Landing Page](https://tu-usuario.github.io/RobotAngel/)
 
 </div>
 
