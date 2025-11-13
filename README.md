@@ -549,7 +549,7 @@ RobotAngel/
 
 - **Issues**: [GitHub Issues](https://github.com/tu-org/RobotAngel/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/tu-org/RobotAngel/discussions)
-- **Correo**: robot-angel@ejemplo.com
+- **Correo**: aroaapa33136@universidadean.edu.co
 
 ---
 
@@ -630,7 +630,6 @@ Roa Aparicio, A. (2025). Robot Angel: Elaboración de un entorno integrado de
 
 - **Universidad EAN**: Por el apoyo institucional
 - **PhD. Luisa Fernanda Carvajal Diaz**: Directora del proyecto
-- **Semilleros de robótica**: Por las pruebas y retroalimentación
 - **Estudiantes y docentes**: Que validaron el proyecto
 
 ### Tecnologías
