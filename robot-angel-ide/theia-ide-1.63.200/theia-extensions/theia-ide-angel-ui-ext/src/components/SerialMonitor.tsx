@@ -76,7 +76,31 @@ export function SerialMonitor() {
   // Load ports on component mount
   useEffect(() => {
     loadSerialPorts();
-  }, []);
+    
+    // Setup polling for serial messages
+    let lastMessageCount = 0;
+    const pollInterval = setInterval(async () => {
+      // @ts-ignore
+      const serialBackend = window.serialBackend;
+      
+      if (serialBackend && isConnected) {
+        try {
+          const messages = await serialBackend.getMessages(lastMessageCount);
+          
+          if (messages.length > 0) {
+            setSerialData((prev) => [...prev, ...messages]);
+            lastMessageCount += messages.length;
+          }
+        } catch (error) {
+          console.error('Failed to poll messages:', error);
+        }
+      }
+    }, 100); // Poll every 100ms
+    
+    return () => {
+      clearInterval(pollInterval);
+    };
+  }, [isConnected]);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -84,46 +108,103 @@ export function SerialMonitor() {
     el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [serialData, autoScroll]);
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim() && isConnected) {
       const timestamp = new Date().toLocaleTimeString();
+      
+      // @ts-ignore
+      const serialBackend = window.serialBackend;
+      
+      if (!serialBackend) {
+        setSerialData((prev) => [
+          ...prev,
+          { type: "error", content: "Serial backend not available", timestamp },
+        ]);
+        return;
+      }
+      
+      // Show sent message
       setSerialData((prev) => [
         ...prev,
         { type: "send", content: message, timestamp },
       ]);
-      setMessage("");
-
       
-      setTimeout(() => {
+      // Send to serial port
+      const result = await serialBackend.sendData(message);
+      
+      if (!result.success) {
         setSerialData((prev) => [
           ...prev,
-          {
-            type: "receive",
-            content: `ACK: ${message}`,
-            timestamp: new Date().toLocaleTimeString(),
-          },
+          { type: "error", content: `Send failed: ${result.message}`, timestamp: new Date().toLocaleTimeString() },
         ]);
-      }, 200);
+      }
+      
+      setMessage("");
     }
   };
 
-  const toggleConnection = () => {
+  const toggleConnection = async () => {
     const timestamp = new Date().toLocaleTimeString();
-    setIsConnected(!isConnected);
-
-    const statusMessage = isConnected
-      ? { type: "disconnect", content: `Disconnected from ${selectedPort}`, timestamp }
-      : { type: "connect", content: `Connected to ${selectedPort} at ${baudRate} baud`, timestamp };
-
-    setSerialData((prev) => [...prev, statusMessage]);
+    
+    // @ts-ignore
+    const serialBackend = window.serialBackend;
+    
+    if (!serialBackend) {
+      setSerialData((prev) => [...prev, { 
+        type: "error", 
+        content: "Serial backend not available", 
+        timestamp 
+      }]);
+      return;
+    }
+    
+    if (isConnected) {
+      // Disconnect
+      const result = await serialBackend.disconnect();
+      setIsConnected(false);
+      setSerialData((prev) => [...prev, { 
+        type: "disconnect", 
+        content: result.message, 
+        timestamp 
+      }]);
+    } else {
+      // Connect
+      if (!selectedPort) {
+        setSerialData((prev) => [...prev, { 
+          type: "error", 
+          content: "Please select a port first", 
+          timestamp 
+        }]);
+        return;
+      }
+      
+      const result = await serialBackend.connect(selectedPort, parseInt(baudRate));
+      
+      if (result.success) {
+        setIsConnected(true);
+        setSerialData((prev) => [...prev, { 
+          type: "connect", 
+          content: result.message, 
+          timestamp 
+        }]);
+      } else {
+        setSerialData((prev) => [...prev, { 
+          type: "error", 
+          content: result.message, 
+          timestamp 
+        }]);
+      }
+    }
   };
 
   const getLineColor = (type: string) => {
     switch (type) {
       case "system": return "text-blue-400";
-      case "send": return "text-green-400";
-      case "receive": return "text-gray-300";
+      case "send": 
+      case "sent": return "text-green-400";
+      case "receive": 
+      case "data": return "text-gray-300";
       case "connect": return "text-purple-400";
       case "disconnect": return "text-yellow-400";
       case "error": return "text-red-400";
@@ -133,8 +214,10 @@ export function SerialMonitor() {
 
   const getPrefix = (type: string) => {
     switch (type) {
-      case "send": return "→ ";
-      case "receive": return "← ";
+      case "send":
+      case "sent": return "→ ";
+      case "receive":
+      case "data": return "← ";
       case "connect": return "⚡ ";
       case "disconnect": return "⚠ ";
       case "error": return "✗ ";

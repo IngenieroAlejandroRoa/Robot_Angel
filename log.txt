@@ -1,96 +1,359 @@
-    at t.CancellationTokenSource.cancel (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/69.js:2:107815)
-    at d (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22275)
-    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/767.js:7:22413
-(Use `electron --trace-warnings ...` to show where the warning was created)
-(node:275374) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
-2025-11-13T02:02:43.577Z root INFO Widget isVisible: true
-2025-11-13T02:02:43.578Z root INFO Widget isAttached: true
-2025-11-13T02:02:43.578Z root INFO ✅ Robot Angel UI opened successfully!
-2025-11-13T02:02:43.763Z root WARN Widget was activated, but did not accept focus after 2000ms: robot-angel-ui:widget
-2025-11-13T02:02:45.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:02:45.371Z root ERROR Board detection failed: 
-2025-11-13T02:02:50.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:02:50.371Z root ERROR Board detection failed: 
-2025-11-13T02:02:55.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:02:55.371Z root ERROR Board detection failed: 
-2025-11-13T02:03:00.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:00.370Z root ERROR Board detection failed: 
-2025-11-13T02:03:05.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:05.370Z root ERROR Board detection failed: 
-2025-11-13T02:03:10.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:10.371Z root ERROR Board detection failed: 
-[275682:1112/210311.248593:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 2 times!
-2025-11-13T02:03:15.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:15.371Z root ERROR Board detection failed: 
-[275682:1112/210317.864936:ERROR:ui/gl/gl_surface_presentation_helper.cc:260] GetVSyncParametersIfAvailable() failed for 3 times!
-2025-11-13T02:03:20.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:20.370Z root ERROR Board detection failed: 
-2025-11-13T02:03:23.137Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:23.137Z root ERROR Board detection failed: 
-2025-11-13T02:03:25.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:25.374Z root ERROR Board detection failed: 
-2025-11-13T02:03:30.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:30.371Z root ERROR Board detection failed: 
-2025-11-13T02:03:33.450Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:33.451Z root ERROR Board detection failed: 
-2025-11-13T02:03:35.371Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:35.371Z root ERROR Board detection failed: 
-2025-11-13T02:03:40.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:40.370Z root ERROR Board detection failed: 
-2025-11-13T02:03:45.371Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:45.372Z root ERROR Board detection failed: 
-2025-11-13T02:03:50.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
-2025-11-13T02:03:50.370Z root ERROR Board detection failed: 
-2025-11-13T02:03:55.370Z root ERROR Failed to spawn board detection: Error: spawn /home/ingeniero/miniconda3/envs/robot-angel/bin/python ENOENT
-    at ChildProcess._handle.onexit (node:internal/child_process:285:19)
-    at onErrorNT (node:internal/child_process:483:16)
-    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.863Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.874Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.884Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.895Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.905Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:42.915Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.715Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.735Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.746Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.756Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.767Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.777Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.787Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.798Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:43.808Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.483Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.503Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.514Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.524Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.535Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.545Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.555Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.566Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:44.576Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:45.641Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.792Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.812Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.823Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.833Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.844Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.854Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.865Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.875Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:48.885Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+2025-11-13T04:14:49.949Z root ERROR Error in message callback: TypeError: t is not a function
+    at /home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13771
+    at Set.forEach (<anonymous>)
+    at p.notifyMessage (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:13755)
+    at Socket.<anonymous> (/home/ingeniero/Desktop/RobotAngel/robot-angel-ide/theia-ide-1.63.200/applications/electron/lib/backend/main.js:1:11878)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
+
 
